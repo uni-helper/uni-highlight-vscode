@@ -13,19 +13,41 @@ describe('should', () => {
           "color": "#859900",
           "end": 14,
           "start": 8,
-          "type": "ifdef",
+          "type": "#ifdef",
         },
         {
-          "color": "#e06c75",
-          "end": 23,
-          "start": 15,
-          "type": "APP-PLUS",
+          "color": "#80bd00",
+          "end": 24,
+          "start": 14,
+          "type": " APP-PLUS ",
         },
         {
           "color": "#859900",
-          "end": 37,
-          "start": 31,
-          "type": "endif",
+          "end": 38,
+          "start": 32,
+          "type": "#endif",
+        },
+      ]
+    `)
+  })
+  it('exported', () => {
+    const code = `
+    // #ifdef MP-Alipay
+    // #endif
+    `
+    expect(getPlatformInfo(code)).toMatchInlineSnapshot(`
+      [
+        {
+          "color": "#859900",
+          "end": 14,
+          "start": 8,
+          "type": "#ifdef",
+        },
+        {
+          "color": "#859900",
+          "end": 38,
+          "start": 32,
+          "type": "#endif",
         },
       ]
     `)

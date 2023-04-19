@@ -24,6 +24,6 @@ export const HIGHTLIGHT_COLOR = {
   },
 }
 
-export const PLATFORM_LIST = Object.keys(HIGHTLIGHT_COLOR.platform).join('|')
+export const PLATFORM_LIST = Object.keys(HIGHTLIGHT_COLOR.platform).join('| ')
 
 export type Platform = keyof typeof HIGHTLIGHT_COLOR.platform
