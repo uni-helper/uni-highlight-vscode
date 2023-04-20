@@ -1,8 +1,8 @@
 import type { Platform } from './constants'
-import { HIGHTLIGHT_COLOR, PLATFORM_LIST } from './constants'
+import { HIGHTLIGHT_COLOR } from './constants'
 
 export function getPlatformInfo(code: string) {
-  const platformReg = new RegExp(`([^\n]*)(#ifdef|#ifndef|#endif)(( ${PLATFORM_LIST})( |$))?`, 'g')
+  const platformReg = /([^\n]*)(#ifdef|#ifndef|#endif)( [^\n]*)?/g
   const platformResult = [...code.matchAll(platformReg)]
 
   const platformInfo = []
@@ -24,14 +24,15 @@ export function getPlatformInfo(code: string) {
     if (!(platform && platform.trim()))
       continue
 
-    const color = HIGHTLIGHT_COLOR.platform[platform.trim() as Platform]
-    const platformStart = self.indexOf(platform) + index
-    const platformEnd = platformStart + platform.length
+    const _platform = platform.trim() as Platform
+    const color = HIGHTLIGHT_COLOR.platform[_platform]
+    const platformStart = self.indexOf(_platform) + index
+    const platformEnd = platformStart + _platform.length
     platformInfo.push({
       start: platformStart,
       end: platformEnd,
       color,
-      type: platform,
+      type: _platform,
     })
   }
   return platformInfo
