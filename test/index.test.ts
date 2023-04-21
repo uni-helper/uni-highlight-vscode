@@ -91,4 +91,41 @@ describe('getPlatformInfo', () => {
       ]
     `)
   })
+  it('be OK with ||', () => {
+    const code = `
+    // #ifdef PLATFORM_IOS || PLATFORM_ANDROID
+    // #endif
+    `
+    expect(getPlatformInfo(code)).toMatchInlineSnapshot(`
+      [
+        {
+          "color": "#859900",
+          "end": 14,
+          "start": 8,
+        },
+        {
+          "color": "#859900",
+          "end": 30,
+          "start": 28,
+        },
+        {
+          "color": undefined,
+          "end": 27,
+          "start": 15,
+          "type": "platform",
+        },
+        {
+          "color": undefined,
+          "end": 47,
+          "start": 31,
+          "type": "platform",
+        },
+        {
+          "color": "#859900",
+          "end": 61,
+          "start": 55,
+        },
+      ]
+    `)
+  })
 })

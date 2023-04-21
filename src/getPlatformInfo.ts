@@ -26,7 +26,7 @@ export function getPlatformInfo(code: string) {
         start,
         end,
         color,
-        type: 'platform',
+        type,
       })
     }
   }

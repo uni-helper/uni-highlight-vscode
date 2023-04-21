@@ -1,15 +1,5 @@
-import { COMMENT_PRE, commentPreReg, commentSufReg } from '../constants'
-
-export function parsePlatform(platform: string, commentPre: string) {
-  if (commentPre !== '//') {
-    const PlatformResult = [...platform.matchAll(commentSufReg)][0]
-    if (!PlatformResult)
-      return platform.trim()
-    const [_self, _platform, _commentSuf] = PlatformResult
-    platform = _platform.trim()
-  }
-  return platform.trim()
-}
+import { COMMENT_PRE, commentPreReg } from '../constants'
+import { parsePlatform } from './parsePlatform'
 
 export function parseComment(code: string) {
   const commentResults = [...code.matchAll(commentPreReg)]
@@ -37,16 +27,33 @@ export function parseComment(code: string) {
         type: 'prefix',
         row: prefix,
       })
-      const platformValue = parsePlatform(platform, commentPre)
-      if (!platformValue)
+      const platforms = parsePlatform(platform, commentPre)
+      if (!platforms)
         continue
-      const platformStart = self.indexOf(platformValue) + index
-      const platformEnd = platformStart + platformValue.length
-      commentAST.push({
-        start: platformStart,
-        end: platformEnd,
-        type: 'platform',
-        row: platformValue,
+
+      if (platforms.length > 1) {
+        const orRex = /\|\|/g
+        const orResult = [...platform.matchAll(orRex)]
+        orResult.forEach((element) => {
+          const orStart = self.indexOf('||') + index
+          const orEnd = orStart + 2
+          commentAST.push({
+            start: orStart,
+            end: orEnd,
+            type: 'prefix',
+            row: element[0],
+          })
+        })
+      }
+      platforms.forEach((element) => {
+        const platformStart = self.indexOf(element) + index
+        const platformEnd = platformStart + element.length
+        commentAST.push({
+          start: platformStart,
+          end: platformEnd,
+          type: 'platform',
+          row: element,
+        })
       })
     }
     else {
