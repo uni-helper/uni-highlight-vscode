@@ -8,13 +8,13 @@
   "description": "在 Vscode中对条件编译的代码注释部分提供了语法高亮",
   "author": "FliPPeDround https://github.com/FliPPeDround",
   "license": "MIT",
-  "homepage": "https://github.com/uni-helper/uni-platform-highlight-vscode#readme",
+  "homepage": "https://github.com/uni-helper/uni-highlight-vscode#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/uni-helper/uni-platform-highlight-vscode"
+    "url": "https://github.com/uni-helper/uni-highlight-vscode"
   },
   "bugs": {
-    "url": "https://github.com/uni-helper/uni-platform-highlight-vscode/issues"
+    "url": "https://github.com/uni-helper/uni-highlight-vscode/issues"
   },
   "keywords": [
     "uniapp",
