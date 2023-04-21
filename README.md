@@ -1,4 +1,5 @@
-# @uni-helper/uni-highlight-platform-vscode
+# uni-helper/uni-highlight-vscode
+
 <pre align="center">
 🏗 Working in Progress
 </pre>
