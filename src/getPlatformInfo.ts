@@ -1,39 +1,34 @@
 import type { Platform } from './constants'
 import { HIGHTLIGHT_COLOR } from './constants'
+import { parseComment } from './parseComment'
 
 export function getPlatformInfo(code: string) {
-  const platformReg = /([^\n]*)(#ifdef|#ifndef|#endif)( [^\n]*)?/g
-  const platformResult = [...code.matchAll(platformReg)]
+  const commentAST = parseComment(code)
+
+  if (!commentAST)
+    return []
 
   const platformInfo = []
-  for (let i = 0; i < platformResult.length; i++) {
-    const item = platformResult[i]
+  for (let i = 0; i < commentAST.length; i++) {
+    const item = commentAST[i]
+    const { start, end, type, row } = item
 
-    const index = item.index!
-    const [self, _comment, prefix, platform] = item
-
-    const platformPrefixStart = self.indexOf(prefix) + index
-    const platformPrefixEnd = platformPrefixStart + prefix.length
-    platformInfo.push({
-      start: platformPrefixStart,
-      end: platformPrefixEnd,
-      color: HIGHTLIGHT_COLOR.prefix,
-      type: prefix,
-    })
-
-    if (!(platform && platform.trim()))
-      continue
-
-    const _platform = platform.trim() as Platform
-    const color = HIGHTLIGHT_COLOR.platform[_platform]
-    const platformStart = self.indexOf(_platform) + index
-    const platformEnd = platformStart + _platform.length
-    platformInfo.push({
-      start: platformStart,
-      end: platformEnd,
-      color,
-      type: _platform,
-    })
+    if (type === 'prefix') {
+      platformInfo.push({
+        start,
+        end,
+        color: HIGHTLIGHT_COLOR.prefix,
+      })
+    }
+    else if (type === 'platform') {
+      const color = HIGHTLIGHT_COLOR.platform[row as Platform]
+      platformInfo.push({
+        start,
+        end,
+        color,
+        type: 'platform',
+      })
+    }
   }
   return platformInfo
 }

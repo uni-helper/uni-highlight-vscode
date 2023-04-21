@@ -1,6 +1,7 @@
 import { commands, workspace } from 'vscode'
 import { getVscodeRange } from './getVscodeRange'
 import { setPlatformColor } from './setPlatformColor'
+import { debounce } from './utils'
 
 function main() {
   const { platformInfo, editor } = getVscodeRange()!
@@ -16,11 +17,9 @@ function main() {
 export function activate() {
   main()
 
-  workspace.onDidChangeTextDocument(() => {
-    main()
-  })
+  workspace.onDidChangeTextDocument(debounce(main, 500))
 
-  commands.registerCommand('diffCompiler.reload', () => {
+  commands.registerCommand('uni.comment.reload', () => {
     main()
   })
 }

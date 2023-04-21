@@ -1,25 +1,17 @@
-import type { TextEditor } from 'vscode'
+import type { TextEditor, TextEditorDecorationType } from 'vscode'
 import { DecorationRangeBehavior, Range, window } from 'vscode'
 import type { PlatformInfo } from './getPlatformInfo'
+import { debounce } from './utils'
 
 const UnderlineDecoration = window.createTextEditorDecorationType({
   textDecoration: 'none; border-bottom: 1px dashed currentColor',
-  color: '',
   cursor: 'pointer',
-  rangeBehavior: DecorationRangeBehavior.ClosedClosed,
-})
-
-const NoneDecoration = window.createTextEditorDecorationType({
-  cursor: 'text',
-  textDecoration: 'none',
   rangeBehavior: DecorationRangeBehavior.ClosedClosed,
 })
 
 function colorDecoration(color: string) {
   return window.createTextEditorDecorationType({
     color,
-    textDecoration: 'none',
-    cursor: 'text',
     rangeBehavior: DecorationRangeBehavior.ClosedClosed,
   })
 }
@@ -28,22 +20,47 @@ export function setPlatformColor(
   platformInfo: PlatformInfo,
   editor: TextEditor,
 ) {
+  let _colorDecoration: TextEditorDecorationType | undefined
   const start = editor.document.positionAt(platformInfo.start)
   const end = editor.document.positionAt(platformInfo.end)
   const editorRange = new Range(start, end)
 
   if (platformInfo.color) {
-    // editor.setDecorations(NoneDecoration, [])
+    const decoration = colorDecoration(platformInfo.color)
+
     editor.setDecorations(
-      colorDecoration(platformInfo.color),
-      [editorRange],
+      UnderlineDecoration,
+      [],
     )
+    if (platformInfo.type === 'platform') {
+      _colorDecoration = decoration
+      editor.setDecorations(
+        _colorDecoration,
+        [editorRange],
+      )
+    }
+    else {
+      editor.setDecorations(
+        decoration,
+        [editorRange],
+      )
+    }
   }
   else {
-    // editor.setDecorations(NoneDecoration, [])
+    if (_colorDecoration) {
+      _colorDecoration.dispose()
+      _colorDecoration = undefined
+    }
     editor.setDecorations(
       UnderlineDecoration,
       [editorRange],
     )
   }
+
+  window.onDidChangeTextEditorSelection(debounce(() => {
+    if (_colorDecoration) {
+      _colorDecoration.dispose()
+      _colorDecoration = undefined
+    }
+  }, 500))
 }

@@ -1,25 +1,26 @@
 {
-  "publisher": "antfu",
-  "name": "ext-name",
-  "displayName": "ext-name",
-  "version": "0.0.0",
+  "publisher": "uni-helper",
+  "name": "uni-highlight-vscode",
+  "displayName": "uni-highlight",
+  "version": "0.0.1",
   "private": true,
   "packageManager": "pnpm@8.1.1",
-  "description": "",
-  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "description": "在 Vscode中对条件编译的代码注释部分提供了语法高亮",
+  "author": "FliPPeDround https://github.com/FliPPeDround",
   "license": "MIT",
-  "funding": "https://github.com/sponsors/antfu",
-  "homepage": "https://github.com/antfu/ext-name#readme",
+  "homepage": "https://github.com/uni-helper/uni-platform-highlight-vscode#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/antfu/ext-name"
+    "url": "https://github.com/uni-helper/uni-platform-highlight-vscode"
   },
   "bugs": {
-    "url": "https://github.com/antfu/ext-name/issues"
+    "url": "https://github.com/uni-helper/uni-platform-highlight-vscode/issues"
   },
-  "sponsor": {
-    "url": "https://github.com/sponsors/antfu"
-  },
+  "keywords": [
+    "uniapp",
+    "uni-app",
+    "highlight"
+  ],
   "categories": [
     "Other"
   ],
