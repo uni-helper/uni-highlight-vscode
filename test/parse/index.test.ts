@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { parseComment, parsePlatform } from './../../src/parseComment'
 
-describe.skip('parseComment', () => {
+describe('parseComment', () => {
   it('should parse comment', () => {
     const code = `
     // #ifdef APP-PLUSaasd
