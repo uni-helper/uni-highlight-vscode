@@ -11,21 +11,34 @@ describe('parseComment', () => {
     expect(parseComment(code)).toMatchInlineSnapshot(`
       [
         {
+          "end": 14,
+          "row": "#ifdef",
+          "start": 8,
+          "type": "prefix",
+        },
+        {
           "end": 27,
-          "platform": "APP-PLUSaasd",
-          "start": 5,
-          "type": "#ifdef",
+          "row": "APP-PLUSaasd",
+          "start": 15,
+          "type": "platform",
         },
         {
           "end": 41,
-          "start": 32,
-          "type": "#endif",
+          "row": "#endif",
+          "start": 35,
+          "type": "prefix",
         },
         {
-          "end": 71,
-          "platform": "APP-PLUS",
-          "start": 50,
-          "type": "#ifdef",
+          "end": 59,
+          "row": "#ifdef",
+          "start": 53,
+          "type": "prefix",
+        },
+        {
+          "end": 68,
+          "row": "APP-PLUS",
+          "start": 60,
+          "type": "platform",
         },
       ]
     `)
