@@ -34,8 +34,9 @@ export function parseComment(code: string) {
       if (platforms.length > 1) {
         const orRex = /\|\|/g
         const orResult = [...platform.matchAll(orRex)]
+        const offset = index + self.indexOf(_platform) + 1
         orResult.forEach((element) => {
-          const orStart = self.indexOf('||') + index
+          const orStart = offset + element.index!
           const orEnd = orStart + 2
           commentAST.push({
             start: orStart,

@@ -83,6 +83,56 @@ describe('parseComment', () => {
         },
       ]
     `)
+    const code2 = `
+    // #ifdef APP-PLUS || APP-PLUS-NVUE || APP-PLUS-NVUE
+    // #endif
+    `
+    expect(parseComment(code2)).toMatchInlineSnapshot(`
+      [
+        {
+          "end": 14,
+          "row": "#ifdef",
+          "start": 8,
+          "type": "prefix",
+        },
+        {
+          "end": 26,
+          "row": "||",
+          "start": 24,
+          "type": "prefix",
+        },
+        {
+          "end": 43,
+          "row": "||",
+          "start": 41,
+          "type": "prefix",
+        },
+        {
+          "end": 23,
+          "row": "APP-PLUS",
+          "start": 15,
+          "type": "platform",
+        },
+        {
+          "end": 40,
+          "row": "APP-PLUS-NVUE",
+          "start": 27,
+          "type": "platform",
+        },
+        {
+          "end": 40,
+          "row": "APP-PLUS-NVUE",
+          "start": 27,
+          "type": "platform",
+        },
+        {
+          "end": 71,
+          "row": "#endif",
+          "start": 65,
+          "type": "prefix",
+        },
+      ]
+    `)
   })
   it('should parse platform', () => {
     const jsCode = `
