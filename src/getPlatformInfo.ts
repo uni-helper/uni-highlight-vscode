@@ -1,5 +1,5 @@
 import type { Platform } from './constants'
-import { HIGHTLIGHT_COLOR } from './constants'
+import { PLATFORM_LIST } from './constants'
 import { parseComment } from './parseComment'
 
 export function getPlatformInfo(code: string) {
@@ -17,16 +17,21 @@ export function getPlatformInfo(code: string) {
       platformInfo.push({
         start,
         end,
-        color: HIGHTLIGHT_COLOR.prefix,
+        type,
       })
     }
-    else if (type === 'platform') {
-      const color = HIGHTLIGHT_COLOR.platform[row as Platform]
+    else if (type === 'platform' && PLATFORM_LIST.includes(row as Platform)) {
       platformInfo.push({
         start,
         end,
-        color,
         type,
+      })
+    }
+    else if (type === 'platform' && !PLATFORM_LIST.includes(row as Platform)) {
+      platformInfo.push({
+        start,
+        end,
+        type: 'unPlatform',
       })
     }
   }

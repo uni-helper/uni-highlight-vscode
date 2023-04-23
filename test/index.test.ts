@@ -10,9 +10,9 @@ describe('getPlatformInfo', () => {
     expect(result).toMatchInlineSnapshot(`
       [
         {
-          "color": "#859900",
           "end": 14,
           "start": 8,
+          "type": "prefix",
         },
       ]
     `)
@@ -25,20 +25,19 @@ describe('getPlatformInfo', () => {
     expect(getPlatformInfo(jsCode)).toMatchInlineSnapshot(`
       [
         {
-          "color": "#859900",
           "end": 14,
           "start": 8,
+          "type": "prefix",
         },
         {
-          "color": undefined,
           "end": 27,
           "start": 15,
-          "type": "platform",
+          "type": "unPlatform",
         },
         {
-          "color": "#859900",
           "end": 41,
           "start": 35,
+          "type": "prefix",
         },
       ]
     `)
@@ -49,20 +48,19 @@ describe('getPlatformInfo', () => {
     expect(getPlatformInfo(htmlCode)).toMatchInlineSnapshot(`
       [
         {
-          "color": "#859900",
           "end": 16,
           "start": 10,
+          "type": "prefix",
         },
         {
-          "color": "#e5c07b",
           "end": 19,
           "start": 17,
           "type": "platform",
         },
         {
-          "color": "#859900",
           "end": 39,
           "start": 33,
+          "type": "prefix",
         },
       ]
     `)
@@ -73,20 +71,19 @@ describe('getPlatformInfo', () => {
     expect(getPlatformInfo(cssCode)).toMatchInlineSnapshot(`
       [
         {
-          "color": "#859900",
           "end": 14,
           "start": 8,
+          "type": "prefix",
         },
         {
-          "color": "#2aae67",
           "end": 17,
           "start": 15,
           "type": "platform",
         },
         {
-          "color": "#859900",
           "end": 34,
           "start": 28,
+          "type": "prefix",
         },
       ]
     `)
@@ -99,31 +96,29 @@ describe('getPlatformInfo', () => {
     expect(getPlatformInfo(code)).toMatchInlineSnapshot(`
       [
         {
-          "color": "#859900",
           "end": 14,
           "start": 8,
+          "type": "prefix",
         },
         {
-          "color": "#859900",
           "end": 30,
           "start": 28,
+          "type": "prefix",
         },
         {
-          "color": undefined,
           "end": 27,
           "start": 15,
-          "type": "platform",
+          "type": "unPlatform",
         },
         {
-          "color": undefined,
           "end": 47,
           "start": 31,
-          "type": "platform",
+          "type": "unPlatform",
         },
         {
-          "color": "#859900",
           "end": 61,
           "start": 55,
+          "type": "prefix",
         },
       ]
     `)

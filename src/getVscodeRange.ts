@@ -1,5 +1,6 @@
 import { window } from 'vscode'
 import { getPlatformInfo } from './../src/getPlatformInfo'
+import { transformPlatform } from './transformPlatform'
 
 export function getVscodeRange() {
   const editor = window.activeTextEditor
@@ -8,9 +9,10 @@ export function getVscodeRange() {
 
   const code = editor.document.getText()
   const platformInfo = getPlatformInfo(code)
+  const highlightRange = transformPlatform(platformInfo)
 
   return {
-    platformInfo,
+    highlightRange,
     editor,
   }
 }

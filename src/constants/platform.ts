@@ -24,6 +24,11 @@ export const HIGHTLIGHT_COLOR = {
   },
 }
 
+// export const HIGHTLIGHT_COLOR = {
+//   prefix: '#859900',
+//   platform: '#2aae67',
+// }
+
 export const PLATFORM_LIST = Object.keys(HIGHTLIGHT_COLOR.platform) as Platform[]
 export const COMMENT_PRE = ['//', '/*', '<!--']
 

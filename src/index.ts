@@ -4,14 +4,9 @@ import { setPlatformColor } from './setPlatformColor'
 import { debounce } from './utils'
 
 function main() {
-  const { platformInfo, editor } = getVscodeRange()!
+  const { highlightRange, editor } = getVscodeRange()!
 
-  if (!platformInfo)
-    return
-
-  platformInfo.forEach((platformInfo) => {
-    setPlatformColor(platformInfo, editor)
-  })
+  setPlatformColor(highlightRange, editor)
 }
 
 export function activate() {
