@@ -14,7 +14,16 @@ export function transformPlatform(platformInfos: PlatformInfo[], editor: TextEdi
       editor.document.positionAt(start),
       editor.document.positionAt(end),
     )
-    highlightRange[platformInfo.type].push(range)
+    highlightRange[platformInfo.type].push(
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
+      platformInfo.type === 'unPlatform'
+        ? {
+            range,
+            row: platformInfo.row,
+          }
+        : range,
+    )
   })
   return highlightRange
 }
@@ -22,5 +31,8 @@ export function transformPlatform(platformInfos: PlatformInfo[], editor: TextEdi
 export interface HighlightRange {
   prefix: Range[]
   platform: Range[]
-  unPlatform: Range[]
+  unPlatform: {
+    range: Range
+    row: string
+  }[]
 }

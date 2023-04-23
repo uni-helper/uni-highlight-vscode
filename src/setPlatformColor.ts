@@ -1,5 +1,5 @@
 import type { TextEditor } from 'vscode'
-import { DecorationRangeBehavior, window } from 'vscode'
+import { DecorationRangeBehavior, MarkdownString, window } from 'vscode'
 import { HIGHTLIGHT_COLOR } from './constants'
 import type { HighlightRange } from './transformPlatform'
 
@@ -41,8 +41,17 @@ export function setPlatformColor(
     platformColorDecoration,
     platform,
   )
+
   editor.setDecorations(
     UnderlineDecoration,
-    unPlatform,
+    unPlatform.map(item => ({
+      range: item.range,
+      hoverMessage: new MarkdownString(`
+### [@uni-helper](https://github.com/uni-helper/uni-highlight-vscode)\n
+~~${item.row}~~ 不是一个有效的平台, 请检查是否拼写错误\n
+***
+详情请查看[文档](https://uniapp.dcloud.net.cn/tutorial/platform.html)
+`),
+    })),
   )
 }

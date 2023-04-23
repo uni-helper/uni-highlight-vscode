@@ -32,6 +32,7 @@ export function getPlatformInfo(code: string): PlatformInfo[] {
         start,
         end,
         type: 'unPlatform',
+        row,
       })
     }
   }
@@ -39,6 +40,7 @@ export function getPlatformInfo(code: string): PlatformInfo[] {
 }
 
 export interface PlatformInfo {
+  row: string
   start: number
   end: number
   type: 'prefix' | 'platform' | 'unPlatform'

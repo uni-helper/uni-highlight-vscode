@@ -31,6 +31,7 @@ describe('getPlatformInfo', () => {
         },
         {
           "end": 27,
+          "row": "PLATFORM_IOS",
           "start": 15,
           "type": "unPlatform",
         },
@@ -107,11 +108,13 @@ describe('getPlatformInfo', () => {
         },
         {
           "end": 27,
+          "row": "PLATFORM_IOS",
           "start": 15,
           "type": "unPlatform",
         },
         {
           "end": 47,
+          "row": "PLATFORM_ANDROID",
           "start": 31,
           "type": "unPlatform",
         },
