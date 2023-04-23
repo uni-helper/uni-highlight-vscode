@@ -9,7 +9,7 @@ export function getVscodeRange() {
 
   const code = editor.document.getText()
   const platformInfo = getPlatformInfo(code)
-  const highlightRange = transformPlatform(platformInfo)
+  const highlightRange = transformPlatform(platformInfo, editor)
 
   return {
     highlightRange,

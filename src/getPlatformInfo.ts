@@ -2,7 +2,7 @@ import type { Platform } from './constants'
 import { PLATFORM_LIST } from './constants'
 import { parseComment } from './parseComment'
 
-export function getPlatformInfo(code: string) {
+export function getPlatformInfo(code: string): PlatformInfo[] {
   const commentAST = parseComment(code)
 
   if (!commentAST)
@@ -35,7 +35,11 @@ export function getPlatformInfo(code: string) {
       })
     }
   }
-  return platformInfo
+  return platformInfo as PlatformInfo[]
 }
 
-export type PlatformInfo = ReturnType<typeof getPlatformInfo>[number]
+export interface PlatformInfo {
+  start: number
+  end: number
+  type: 'prefix' | 'platform' | 'unPlatform'
+}
