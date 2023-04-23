@@ -25,12 +25,12 @@
     "Other"
   ],
   "main": "./dist/index.js",
-  "icon": "res/icon.png",
+  "icon": "icon.png",
   "files": [
     "dist"
   ],
   "engines": {
-    "vscode": "^1.69.0"
+    "vscode": "^1.77.0"
   },
   "activationEvents": [
     "onStartupFinished"
