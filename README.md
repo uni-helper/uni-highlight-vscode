@@ -1,7 +1,7 @@
 <h1 align="center"><font color="#2a9838">uni-helper/uni-highlight-vscode</font></h1>
 
-## VScode条件编译语法高亮支持
-在`VScode`中对条件编译的代码注释部分提供了语法高亮，可分辨出写法是否正确，使得代码更加清晰
+## VS Code条件编译语法高亮支持
+在`VS Code`中对条件编译的代码注释部分提供了语法高亮，可分辨出写法是否正确，使得代码更加清晰
 
 ***
 
