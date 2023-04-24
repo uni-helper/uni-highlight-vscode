@@ -1,5 +1,5 @@
 import type { Platform } from './constants'
-import { PLATFORM_LIST } from './constants'
+import { PLATFORM_LIST, HIGHTLIGHT_COLOR } from './constants'
 import { parseComment } from './parseComment'
 
 export function getPlatformInfo(code: string): PlatformInfo[] {
@@ -8,27 +8,29 @@ export function getPlatformInfo(code: string): PlatformInfo[] {
   if (!commentAST)
     return []
 
-  const platformInfo = []
+  const platformInfos = []
   for (let i = 0; i < commentAST.length; i++) {
     const item = commentAST[i]
     const { start, end, type, row } = item
+    const color = HIGHTLIGHT_COLOR.platform[row as Platform]
 
     if (type === 'prefix') {
-      platformInfo.push({
+      platformInfos.push({
         start,
         end,
         type,
       })
     }
-    else if (type === 'platform' && PLATFORM_LIST.includes(row as Platform)) {
-      platformInfo.push({
+    else if (type === 'platform' && color) {
+      platformInfos.push({
         start,
         end,
         type,
+        color,
       })
     }
-    else if (type === 'platform' && !PLATFORM_LIST.includes(row as Platform)) {
-      platformInfo.push({
+    else if (type === 'platform' && !color) {
+      platformInfos.push({
         start,
         end,
         type: 'unPlatform',
@@ -36,7 +38,7 @@ export function getPlatformInfo(code: string): PlatformInfo[] {
       })
     }
   }
-  return platformInfo as PlatformInfo[]
+  return platformInfos as unknown as PlatformInfo[]
 }
 
 export interface PlatformInfo {
@@ -44,4 +46,5 @@ export interface PlatformInfo {
   start: number
   end: number
   type: 'prefix' | 'platform' | 'unPlatform'
+  color: string
 }

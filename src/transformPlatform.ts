@@ -1,4 +1,4 @@
-import type { TextEditor } from 'vscode'
+import { Color, TextEditor } from 'vscode'
 import { Range } from 'vscode'
 import type { PlatformInfo } from './getPlatformInfo'
 
@@ -9,28 +9,36 @@ export function transformPlatform(platformInfos: PlatformInfo[], editor: TextEdi
     unPlatform: [],
   }
   platformInfos.forEach((platformInfo) => {
-    const { start, end } = platformInfo
+    const { start, end,row, color } = platformInfo
     const range = new Range(
       editor.document.positionAt(start),
       editor.document.positionAt(end),
     )
-    highlightRange[platformInfo.type].push(
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      platformInfo.type === 'unPlatform'
-        ? {
-            range,
-            row: platformInfo.row,
-          }
-        : range,
-    )
+    if (platformInfo.type === 'prefix') {
+      highlightRange.prefix.push(range)
+    }
+    if (platformInfo.type === 'platform') {
+      highlightRange.platform.push({
+        range,
+        color,
+    })
+    }
+    if (platformInfo.type === 'unPlatform') {
+      highlightRange.unPlatform.push({
+        range,
+        row,
+      })
+    }
   })
   return highlightRange
 }
 
 export interface HighlightRange {
   prefix: Range[]
-  platform: Range[]
+  platform: {
+    range:Range
+    color: string
+  }[]
   unPlatform: {
     range: Range
     row: string

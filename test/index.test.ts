@@ -54,6 +54,7 @@ describe('getPlatformInfo', () => {
           "type": "prefix",
         },
         {
+          "color": "#e5c07b",
           "end": 19,
           "start": 17,
           "type": "platform",
@@ -77,6 +78,7 @@ describe('getPlatformInfo', () => {
           "type": "prefix",
         },
         {
+          "color": "#2aae67",
           "end": 17,
           "start": 15,
           "type": "platform",

@@ -1,4 +1,4 @@
-import type { TextEditor } from 'vscode'
+import type { TextEditor, TextEditorDecorationType } from 'vscode'
 import { DecorationRangeBehavior, MarkdownString, window } from 'vscode'
 import { HIGHTLIGHT_COLOR } from './constants'
 import type { HighlightRange } from './transformPlatform'
@@ -14,14 +14,21 @@ const prefixColorDecoration = window.createTextEditorDecorationType({
   rangeBehavior: DecorationRangeBehavior.ClosedClosed,
 })
 
-const platformColorDecoration = window.createTextEditorDecorationType({
-  color: HIGHTLIGHT_COLOR.platform['MP-WEIXIN'],
-  rangeBehavior: DecorationRangeBehavior.ClosedClosed,
-})
+function createPlatformColorDecoration (color: string) {
+  return window.createTextEditorDecorationType({
+    color,
+    rangeBehavior: DecorationRangeBehavior.ClosedClosed,
+  })
+}
 
+const platformColorDecorationList:TextEditorDecorationType[] = []
 function initDecorations(editor: TextEditor) {
   editor.setDecorations(UnderlineDecoration, [])
-  editor.setDecorations(platformColorDecoration, [])
+  if(platformColorDecorationList.length > 0)
+    platformColorDecorationList.forEach(item => {
+      item.dispose()
+    })
+  platformColorDecorationList.length = 0
   editor.setDecorations(prefixColorDecoration, [])
 }
 
@@ -37,10 +44,16 @@ export function setPlatformColor(
     prefixColorDecoration,
     prefix,
   )
-  editor.setDecorations(
-    platformColorDecoration,
-    platform,
-  )
+
+  platform.forEach(item => {
+    const { color, range } = item
+    const decoration = createPlatformColorDecoration(color)
+    platformColorDecorationList.push(decoration)
+    editor.setDecorations(
+      decoration,
+      [range],
+    )
+  })
 
   editor.setDecorations(
     UnderlineDecoration,

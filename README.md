@@ -14,6 +14,10 @@
 <img src="./.github/images/more.png" width="300">
 
 ***
+### 各平台多种颜色高亮
+<img src="./.github/images/colorful.png" width="300">
+
+***
 
 ### 错误提示
 <img src='./.github/images/error.png' width="400">
