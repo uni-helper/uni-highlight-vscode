@@ -46,15 +46,14 @@ export function setPlatformColor(
     prefix,
   )
 
-  platform.forEach((item) => {
-    const { color, range } = item
+  for (const color in platform) {
     const decoration = createPlatformColorDecoration(color)
     platformColorDecorationList.push(decoration)
     editor.setDecorations(
       decoration,
-      [range],
+      platform[color],
     )
-  })
+  }
 
   editor.setDecorations(
     UnderlineDecoration,

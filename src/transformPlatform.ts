@@ -5,7 +5,7 @@ import type { PlatformInfo } from './getPlatformInfo'
 export function transformPlatform(platformInfos: PlatformInfo[], editor: TextEditor) {
   const highlightRange: HighlightRange = {
     prefix: [],
-    platform: [],
+    platform: {},
     unPlatform: [],
   }
   platformInfos.forEach((platformInfo) => {
@@ -18,11 +18,12 @@ export function transformPlatform(platformInfos: PlatformInfo[], editor: TextEdi
       highlightRange.prefix.push(range)
 
     if (platformInfo.type === 'platform') {
-      highlightRange.platform.push({
-        range,
-        color,
-      })
+      if (!highlightRange.platform[color])
+        highlightRange.platform[color] = []
+
+      highlightRange.platform[color].push(range)
     }
+
     if (platformInfo.type === 'unPlatform') {
       highlightRange.unPlatform.push({
         range,
@@ -36,9 +37,8 @@ export function transformPlatform(platformInfos: PlatformInfo[], editor: TextEdi
 export interface HighlightRange {
   prefix: Range[]
   platform: {
-    range: Range
-    color: string
-  }[]
+    [key: string]: Range[]
+  }
   unPlatform: {
     range: Range
     row: string
