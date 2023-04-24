@@ -1,5 +1,5 @@
 import type { Platform } from './constants'
-import { PLATFORM_LIST, HIGHTLIGHT_COLOR } from './constants'
+import { HIGHTLIGHT_COLOR } from './constants'
 import { parseComment } from './parseComment'
 
 export function getPlatformInfo(code: string): PlatformInfo[] {

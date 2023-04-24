@@ -14,20 +14,21 @@ const prefixColorDecoration = window.createTextEditorDecorationType({
   rangeBehavior: DecorationRangeBehavior.ClosedClosed,
 })
 
-function createPlatformColorDecoration (color: string) {
+function createPlatformColorDecoration(color: string) {
   return window.createTextEditorDecorationType({
     color,
     rangeBehavior: DecorationRangeBehavior.ClosedClosed,
   })
 }
 
-const platformColorDecorationList:TextEditorDecorationType[] = []
+const platformColorDecorationList: TextEditorDecorationType[] = []
 function initDecorations(editor: TextEditor) {
   editor.setDecorations(UnderlineDecoration, [])
-  if(platformColorDecorationList.length > 0)
-    platformColorDecorationList.forEach(item => {
+  if (platformColorDecorationList.length > 0) {
+    platformColorDecorationList.forEach((item) => {
       item.dispose()
     })
+  }
   platformColorDecorationList.length = 0
   editor.setDecorations(prefixColorDecoration, [])
 }
@@ -45,7 +46,7 @@ export function setPlatformColor(
     prefix,
   )
 
-  platform.forEach(item => {
+  platform.forEach((item) => {
     const { color, range } = item
     const decoration = createPlatformColorDecoration(color)
     platformColorDecorationList.push(decoration)
