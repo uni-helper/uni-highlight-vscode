@@ -1,4 +1,5 @@
-import { ExtensionContext, commands, languages, workspace } from 'vscode'
+import type { ExtensionContext } from 'vscode'
+import { commands, languages, workspace } from 'vscode'
 import { getVscodeRange } from './getVscodeRange'
 import { setPlatformColor } from './setPlatformColor'
 import { debounce } from './utils'
@@ -21,9 +22,9 @@ export function activate(context: ExtensionContext) {
   context.subscriptions.push(
     languages.registerFoldingRangeProvider(
       [{ pattern: '**/*.*', scheme: 'file' }],
-      new CommentFoldingRangeProvider()
-    )
-  );
+      new CommentFoldingRangeProvider(),
+    ),
+  )
 }
 
 export function deactivate() {
