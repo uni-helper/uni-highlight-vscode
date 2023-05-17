@@ -2,6 +2,9 @@ import { COMMENT_PRE, commentPreReg } from '../constants'
 import { parsePlatform } from './parsePlatform'
 
 export function parseComment(code: string) {
+  if (code.trim().length === 0)
+    return
+
   const commentResults = [...code.matchAll(commentPreReg)]
   if (commentResults.length === 0)
     return

@@ -5,10 +5,9 @@ import type {
   ProviderResult,
   TextDocument,
 } from 'vscode'
-import {
-  FoldingRange,
-  FoldingRangeKind,
-} from 'vscode'
+
+import { FoldingRange, FoldingRangeKind } from 'vscode'
+import { parseComment } from './parseComment'
 
 export class CommentFoldingRangeProvider implements FoldingRangeProvider {
   provideFoldingRanges(
@@ -21,15 +20,18 @@ export class CommentFoldingRangeProvider implements FoldingRangeProvider {
     const startLines = []
     const endLines = []
     const stack = []
-
     const lines = text.split('\n')
+
     for (let i = 0; i < lines.length; i++) {
-      const line = lines[i].trim()
-      if (line.includes('#ifdef')) {
+      const { row } = parseComment(lines[i])?.[0] ?? {}
+      if (!row)
+        continue
+
+      if (row === '#ifdef' || row === '#ifndef') {
         startLines.push(i + 1)
         stack.push(startLines.length - 1)
       }
-      else if (line.includes('#endif')) {
+      else if (row === '#endif') {
         const index = stack.pop()
         if (index !== undefined)
           endLines[index] = i + 1
