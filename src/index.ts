@@ -1,4 +1,4 @@
-import type { ExtensionContext } from 'vscode'
+import type { ExtensionContext, TextEditor } from 'vscode'
 import { commands, languages, window, workspace } from 'vscode'
 import { getVscodeRange } from './getVscodeRange'
 import { setPlatformColor } from './setPlatformColor'
@@ -11,8 +11,13 @@ function main() {
   setPlatformColor(highlightRange, editor)
 }
 
+function onActiveEditorChanged(editor: TextEditor | undefined) {
+  if (editor)
+    main()
+}
+
 function setupEventListeners() {
-  window.onDidChangeActiveTextEditor(debounce(main, 0))
+  window.onDidChangeActiveTextEditor(onActiveEditorChanged)
 
   workspace.onDidChangeTextDocument(debounce(main, 500))
 }
