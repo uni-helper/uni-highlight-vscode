@@ -1,5 +1,5 @@
 import type { ExtensionContext } from 'vscode'
-import { commands, languages, workspace } from 'vscode'
+import { commands, languages, window, workspace } from 'vscode'
 import { getVscodeRange } from './getVscodeRange'
 import { setPlatformColor } from './setPlatformColor'
 import { debounce } from './utils'
@@ -11,10 +11,15 @@ function main() {
   setPlatformColor(highlightRange, editor)
 }
 
-export function activate(context: ExtensionContext) {
-  main()
+function setupEventListeners() {
+  window.onDidChangeActiveTextEditor(debounce(main, 0))
 
   workspace.onDidChangeTextDocument(debounce(main, 500))
+}
+
+export function activate(context: ExtensionContext) {
+  main()
+  setupEventListeners()
 
   commands.registerCommand('uni.comment.reload', () => {
     main()

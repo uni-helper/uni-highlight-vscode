@@ -63,7 +63,7 @@ export function setPlatformColor(
 ### [@uni-helper](https://github.com/uni-helper/uni-highlight-vscode)\n
 ~~${item.row}~~ 不是一个有效的平台, 请检查是否拼写错误\n
 ***
-详情请查看[文档](https://uniapp.dcloud.net.cn/tutorial/platform.html)
+详情请查看[\`文档\`](https://uniapp.dcloud.net.cn/tutorial/platform.html#preprocessor)
 `),
     })),
   )
