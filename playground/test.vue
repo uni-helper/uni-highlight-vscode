@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // #ifdef H5
-const test = 1
+const test = 'text'
 // #endif
 </script>
 

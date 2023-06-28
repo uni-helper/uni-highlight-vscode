@@ -6,8 +6,11 @@ import { debounce } from './utils'
 import { CommentFoldingRangeProvider } from './CommentFoldingRangeProvider'
 
 function main() {
-  const { highlightRange, editor } = getVscodeRange()!
+  const editor = window.activeTextEditor
+  if (!editor)
+    return
 
+  const highlightRange = getVscodeRange(editor)
   setPlatformColor(highlightRange, editor)
 }
 
@@ -18,7 +21,6 @@ function onActiveEditorChanged(editor: TextEditor | undefined) {
 
 function setupEventListeners() {
   window.onDidChangeActiveTextEditor(onActiveEditorChanged)
-
   workspace.onDidChangeTextDocument(debounce(main, 500))
 }
 
