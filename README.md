@@ -16,6 +16,10 @@
 
 ***
 
+### 错误提示
+
+<img src='./.github/images/error.png' width="400">
+
 ### 注释块折叠
 
 <img src="./.github/images/folding.png" width="300">
@@ -28,15 +32,27 @@
 
 ***
 
-### 各平台多种颜色高亮
+### 自定义高亮
 
-<img src="./.github/images/colorful.png" width="300">
+```json
+/**
+ * 文件路径：.vscode/settings.json
+ * 配置项：uni-highlight.platform
+ * 配置说明：1. 可以覆盖原有高亮颜色
+ *         2. 可以添加新的平台及颜色
+ */
+{
+  "uni-highlight.platform": {
+    "MP-DINGTALK": "#41b883"
+  }
+}
+```
 
 ***
 
-### 错误提示
+### 各平台多种颜色高亮
 
-<img src='./.github/images/error.png' width="400">
+<img src="./.github/images/colorful.png" width="300">
 
 ***
 

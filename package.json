@@ -35,6 +35,18 @@
   "activationEvents": [
     "onStartupFinished"
   ],
+  "contributes": {
+    "configuration": {
+      "title": "uni-highlight",
+      "properties": {
+        "uni-highlight.platform": {
+          "type": "object",
+          "default": {},
+          "description": "自定义平台高亮"
+        }
+      }
+    }
+  },
   "scripts": {
     "build": "tsup src/index.ts --external vscode",
     "dev": "nr build --watch",
