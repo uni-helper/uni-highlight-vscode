@@ -36,6 +36,12 @@
     "onStartupFinished"
   ],
   "contributes": {
+    "commands": [
+      {
+        "command": "uni.comment.reload",
+        "title": "UniHelper: Reload Comment"
+      }
+    ],
     "configuration": {
       "title": "uni-highlight",
       "properties": {

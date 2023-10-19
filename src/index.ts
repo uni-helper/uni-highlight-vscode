@@ -28,14 +28,14 @@ export function activate(context: ExtensionContext) {
   main()
   setupEventListeners()
 
-  commands.registerCommand('uni.comment.reload', () => {
-    main()
-  })
   context.subscriptions.push(
     languages.registerFoldingRangeProvider(
       [{ pattern: '**/*.*', scheme: 'file' }],
       new CommentFoldingRangeProvider(),
     ),
+    commands.registerCommand('uni.comment.reload', () => {
+      main()
+    }),
   )
 }
 
