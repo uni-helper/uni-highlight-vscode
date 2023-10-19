@@ -39,7 +39,11 @@
     "commands": [
       {
         "command": "uni.comment.reload",
-        "title": "UniHelper: Reload Comment"
+        "title": "Uni Helper: 重新加载条件编译高亮"
+      },
+      {
+        "command": "uni.comment.fold-other-platform",
+        "title": "Uni Helper: 选择平台并折叠其他平台注释"
       }
     ],
     "configuration": {

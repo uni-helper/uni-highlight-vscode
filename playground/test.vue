@@ -2,6 +2,9 @@
 // #ifdef H5
 const test = 'text'
 // #endif
+// #ifdef MP
+const mp = 'text'
+// #endif
 </script>
 
 <template>
@@ -13,9 +16,10 @@ const test = 'text'
 </template>
 
 <style>
-  /* #ifdef H5 */
-  .test {
-    color: red;
-  }
-  /* #endif */
+/* #ifdef H5 */
+.test {
+  color: red;
+}
+
+/* #endif */
 </style>

@@ -1,7 +1,7 @@
 <h1 align="center"><font color="#2a9838">uni-helper/uni-highlight-vscode</font></h1>
 <p align="center">
-<a href="https://marketplace.visualstudio.com/items?itemName=uni-helper.uni-highlight-vscode" target="__blank"><img src="https://img.shields.io/visual-studio-marketplace/v/uni-helper.uni-highlight-vscode.svg?color=4d9375&amp;label=Marketplace&logo=visual-studio-code" alt="Visual Studio Marketplace Version" /></a>
-<a href="https://open-vsx.org/extension/uni-helper/uni-highlight-vscode" target="__blank"><img src="https://img.shields.io/visual-studio-marketplace/v/uni-helper.uni-highlight-vscode.svg?color=c160ef&amp;label=OpenVSX&logo=OpenVSX" alt="Visual Studio Marketplace Version" /></a>
+<a href="https://marketplace.visualstudio.com/items?itemName=uni-helper.uni-highlight-vscode" target="__blank"><img src="https://img.shields.io/visual-studio-marketplace/v/uni-helper.uni-highlight-vscode.svg?color=4d9375&label=Marketplace&logo=visual-studio-code" alt="Visual Studio Marketplace Version" /></a>
+<a href="https://open-vsx.org/extension/uni-helper/uni-highlight-vscode" target="__blank"><img src="https://img.shields.io/visual-studio-marketplace/v/uni-helper.uni-highlight-vscode.svg?color=c160ef&label=OpenVSX&logo=OpenVSX" alt="Visual Studio Marketplace Version" /></a>
 </p>
 
 ## VS Code条件编译语法高亮支持
@@ -34,7 +34,7 @@
 
 ### 自定义高亮
 
-```jsonc
+```json5
 /**
  * 文件路径：.vscode/settings.json
  * 配置项：uni-highlight.platform
