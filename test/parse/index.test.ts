@@ -1,12 +1,24 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { parsePlatform } from '../../src/parseComment/parsePlatform'
 import { parseComment } from './../../src/parseComment'
+
+vi.mock('vscode', () => {
+  return {
+    workspace: {
+      getConfiguration: () => {
+        return {
+          get: vi.fn(),
+        }
+      },
+    },
+  }
+})
 
 describe('parseComment', () => {
   it('should parse comment', () => {
     const code = `
     // #ifdef APP-PLUSaasd
-    // #endif    
+    // #endif
     /* #ifdef APP-PLUS */
     `
     expect(parseComment(code)).toMatchInlineSnapshot(`
@@ -30,15 +42,15 @@ describe('parseComment', () => {
           "type": "prefix",
         },
         {
-          "end": 59,
+          "end": 55,
           "row": "#ifdef",
-          "start": 53,
+          "start": 49,
           "type": "prefix",
         },
         {
-          "end": 68,
+          "end": 64,
           "row": "APP-PLUS",
-          "start": 60,
+          "start": 56,
           "type": "platform",
         },
       ]
