@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
 import { parsePlatform } from '../../src/parseComment/parsePlatform'
-import { parseComment } from './../../src/parseComment'
+import { parseComment } from '../../src/parseComment'
 
 vi.mock('vscode', () => {
   return {

@@ -1,5 +1,17 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { getPlatformInfo } from './../src/getPlatformInfo'
+
+vi.mock('vscode', () => {
+  return {
+    workspace: {
+      getConfiguration: () => {
+        return {
+          get: vi.fn(),
+        }
+      },
+    },
+  }
+})
 
 describe('getPlatformInfo', () => {
   it('get // #endif', () => {
