@@ -4,6 +4,7 @@ import { getVscodeRange } from './getVscodeRange'
 import { setPlatformColor } from './setPlatformColor'
 import { debounce } from './utils'
 import { CommentFoldingRangeProvider } from './CommentFoldingRangeProvider'
+import { foldOtherPlatformComment } from './foldOtherPlatformComment'
 
 function main() {
   const editor = window.activeTextEditor
@@ -35,6 +36,9 @@ export function activate(context: ExtensionContext) {
     ),
     commands.registerCommand('uni.comment.reload', () => {
       main()
+    }),
+    commands.registerCommand('uni.comment.fold-other-platform', () => {
+      foldOtherPlatformComment(context)
     }),
   )
 }
