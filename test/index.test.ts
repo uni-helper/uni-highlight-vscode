@@ -68,6 +68,7 @@ describe('getPlatformInfo', () => {
         {
           "color": "#e5c07b",
           "end": 19,
+          "row": "H5",
           "start": 17,
           "type": "platform",
         },
@@ -92,6 +93,7 @@ describe('getPlatformInfo', () => {
         {
           "color": "#2aae67",
           "end": 17,
+          "row": "MP",
           "start": 15,
           "type": "platform",
         },
