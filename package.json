@@ -43,7 +43,8 @@
       },
       {
         "command": "uni.comment.fold-other-platform",
-        "title": "Uni Helper: 选择平台并折叠其他平台注释"
+        "title": "Uni Helper: 选择平台并折叠其他平台注释",
+        "icon": "$(list-tree)"
       }
     ],
     "configuration": {
@@ -55,6 +56,15 @@
           "description": "自定义平台高亮"
         }
       }
+    },
+    "menus": {
+      "editor/title": [
+        {
+          "command": "uni.comment.fold-other-platform",
+          "group": "navigation@0",
+          "when": "uni.hasComment"
+        }
+      ]
     }
   },
   "scripts": {

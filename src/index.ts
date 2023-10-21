@@ -1,32 +1,26 @@
-import type { ExtensionContext, TextEditor } from 'vscode'
+import type { ExtensionContext } from 'vscode'
 import { commands, languages, window, workspace } from 'vscode'
-import { getVscodeRange } from './getVscodeRange'
-import { setPlatformColor } from './setPlatformColor'
+import { Ranges } from './getVscodeRange'
 import { debounce } from './utils'
 import { CommentFoldingRangeProvider } from './CommentFoldingRangeProvider'
 import { foldOtherPlatformComment } from './foldOtherPlatformComment'
 
-function main() {
-  const editor = window.activeTextEditor
-  if (!editor)
-    return
-
-  const highlightRange = getVscodeRange(editor)
-  setPlatformColor(highlightRange, editor)
-}
-
-function onActiveEditorChanged(editor: TextEditor | undefined) {
-  if (editor)
-    main()
+function onActiveEditorChanged() {
+  const range = new Ranges()
+  range.setColor()
 }
 
 function setupEventListeners() {
   window.onDidChangeActiveTextEditor(onActiveEditorChanged)
-  workspace.onDidChangeTextDocument(debounce(main, 500))
+  workspace.onDidChangeTextDocument(debounce(() => {
+    const range = new Ranges()
+    range.setColor()
+  }, 500))
 }
 
 export function activate(context: ExtensionContext) {
-  main()
+  const range = new Ranges()
+  range.setColor()
   setupEventListeners()
 
   context.subscriptions.push(
@@ -35,10 +29,11 @@ export function activate(context: ExtensionContext) {
       new CommentFoldingRangeProvider(),
     ),
     commands.registerCommand('uni.comment.reload', () => {
-      main()
+      range.setColor()
     }),
     commands.registerCommand('uni.comment.fold-other-platform', () => {
-      foldOtherPlatformComment(context)
+      const range = new Ranges()
+      foldOtherPlatformComment(context, range.platformList)
     }),
   )
 }

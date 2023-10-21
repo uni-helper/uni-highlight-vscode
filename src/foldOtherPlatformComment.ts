@@ -1,11 +1,14 @@
 import type { ExtensionContext } from 'vscode'
 import { Position, Range, commands, window } from 'vscode'
-import { PLATFORM_LIST } from './constants'
 import { CommentFoldingRangeProvider } from './CommentFoldingRangeProvider'
 
-export async function foldOtherPlatformComment(_context: ExtensionContext) {
+export async function foldOtherPlatformComment(
+  _context: ExtensionContext,
+  currentPlatform: string[],
+) {
   const platform = await window.showQuickPick([
-    ...PLATFORM_LIST,
+    'ALL',
+    ...currentPlatform,
   ])
 
   if (!platform)
@@ -22,7 +25,7 @@ export async function foldOtherPlatformComment(_context: ExtensionContext) {
         const text = document.getText(lineNumberToRange(v.start))
         return {
           start: v.start,
-          flag: !text?.includes(platform),
+          flag: platform === 'ALL' ? false : !text?.includes(platform),
         }
       })
       const fold = comments.filter(v => v.flag).map(v => v.start)

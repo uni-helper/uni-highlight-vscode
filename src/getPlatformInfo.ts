@@ -27,6 +27,7 @@ export function getPlatformInfo(code: string): PlatformInfo[] {
         end,
         type,
         color,
+        row,
       })
     }
     else if (type === 'platform' && !color) {
