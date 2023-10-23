@@ -21,6 +21,8 @@ export function parseComment(code: string) {
 
     const platform = _platform.trim()
 
+    const lineNumber = code.substring(0, index).split('\n').length
+
     if (platform && prefix !== '#endif') {
       const prefixStart = self.indexOf(prefix) + index
       const prefixEnd = prefixStart + prefix.length
@@ -29,6 +31,7 @@ export function parseComment(code: string) {
         end: prefixEnd,
         type: 'prefix',
         row: prefix,
+        line: lineNumber,
       })
       const platforms = parsePlatform(platform, commentPre)
       if (!platforms)
@@ -46,6 +49,7 @@ export function parseComment(code: string) {
             end: orEnd,
             type: 'prefix',
             row: element[0],
+            line: lineNumber,
           })
         })
       }
@@ -57,6 +61,7 @@ export function parseComment(code: string) {
           end: platformEnd,
           type: 'platform',
           row: element,
+          line: lineNumber,
         })
       })
     }
@@ -68,6 +73,7 @@ export function parseComment(code: string) {
         end,
         row: prefix,
         type: 'prefix',
+        line: lineNumber,
       })
     }
   }

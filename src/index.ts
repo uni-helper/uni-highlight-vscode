@@ -29,15 +29,13 @@ export function activate(context: ExtensionContext) {
       new CommentFoldingRangeProvider(),
     ),
     commands.registerCommand('uni.comment.reload', () => {
+      const range = new Ranges()
       range.setColor()
     }),
     commands.registerCommand('uni.comment.fold-other-platform', () => {
-      const range = new Ranges()
-      foldOtherPlatformComment(context, range.platformList)
+      foldOtherPlatformComment()
     }),
   )
 }
 
-export function deactivate() {
-
-}
+export function deactivate() {}

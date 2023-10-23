@@ -1,56 +1,46 @@
-import type { ExtensionContext } from 'vscode'
-import { Position, Range, commands, window } from 'vscode'
-import { CommentFoldingRangeProvider } from './CommentFoldingRangeProvider'
+import { commands, window } from 'vscode'
+import { Ranges } from './getVscodeRange'
+import type { PlatformInfo } from './getPlatformInfo'
 
-export async function foldOtherPlatformComment(
-  _context: ExtensionContext,
-  currentPlatform: string[],
-) {
+export async function foldOtherPlatformComment() {
+  const range = new Ranges()
+  const { platformList, platformInfo } = range
+  if (!platformList.length)
+    return
+
   const platform = await window.showQuickPick([
     'ALL',
-    ...currentPlatform,
+    ...platformList,
   ])
-
   if (!platform)
     return
 
-  const editor = window.activeTextEditor
-  const document = editor?.document
+  const { fold, unfold } = getFoldLines(platform, platformInfo)
 
-  if (document) {
-    const c = new CommentFoldingRangeProvider()
-    const ranges = c.provideFoldingRanges(document, undefined as any, undefined as any)
-    if (Array.isArray(ranges)) {
-      const comments = ranges.map((v) => {
-        const text = document.getText(lineNumberToRange(v.start))
-        return {
-          start: v.start,
-          flag: platform === 'ALL' ? false : !text?.includes(platform),
-        }
-      })
-      const fold = comments.filter(v => v.flag).map(v => v.start)
-      const unfold = comments.filter(v => !v.flag).map(v => v.start)
-      await commands.executeCommand('editor.unfold', {
-        levels: 1,
-        direction: 'up',
-        selectionLines: unfold,
-      })
-      await commands.executeCommand('editor.fold', {
-        levels: 1,
-        direction: 'up',
-        selectionLines: fold,
-      })
+  await commands.executeCommand('editor.unfold', {
+    levels: 1,
+    direction: 'up',
+    selectionLines: unfold,
+  })
+  await commands.executeCommand('editor.fold', {
+    levels: 1,
+    direction: 'up',
+    selectionLines: fold,
+  })
+}
+
+function getFoldLines(platform: string, platformInfo: PlatformInfo[]) {
+  const platformStarts = platformInfo.filter(({ type }) => type === 'platform')
+
+  if (platform === 'ALL') {
+    return {
+      fold: [],
+      unfold: platformStarts.map(({ line }) => line - 1),
     }
   }
 
-  function lineNumberToRange(line: number): Range {
-    // Convert the line number to a position
-    const startPosition = new Position(line, 0)
-    const endPosition = new Position(line, Number.MAX_SAFE_INTEGER)
+  const fold = platformStarts.filter(({ row }) => row !== platform).map(({ line }) => line - 1)
+  const unfold = platformStarts.filter(({ row }) => row === platform).map(({ line }) => line - 1)
 
-    // Create a range using the start and end positions
-    const range = new Range(startPosition, endPosition)
-
-    return range
-  }
+  return { fold, unfold }
 }

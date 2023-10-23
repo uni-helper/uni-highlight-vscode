@@ -11,6 +11,7 @@ const mp = 'text'
   <!-- #ifdef H5 -->
   <view class="test">
     test
+    a
   </view>
   <!-- #endif -->
 </template>

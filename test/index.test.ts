@@ -23,6 +23,8 @@ describe('getPlatformInfo', () => {
       [
         {
           "end": 14,
+          "line": 2,
+          "row": "#endif",
           "start": 8,
           "type": "prefix",
         },
@@ -38,6 +40,8 @@ describe('getPlatformInfo', () => {
       [
         {
           "end": 14,
+          "line": 2,
+          "row": "#ifdef",
           "start": 8,
           "type": "prefix",
         },
@@ -49,6 +53,8 @@ describe('getPlatformInfo', () => {
         },
         {
           "end": 41,
+          "line": 3,
+          "row": "#endif",
           "start": 35,
           "type": "prefix",
         },
@@ -62,18 +68,23 @@ describe('getPlatformInfo', () => {
       [
         {
           "end": 16,
+          "line": 2,
+          "row": "#ifdef",
           "start": 10,
           "type": "prefix",
         },
         {
           "color": "#e5c07b",
           "end": 19,
+          "line": 2,
           "row": "H5",
           "start": 17,
           "type": "platform",
         },
         {
           "end": 39,
+          "line": 3,
+          "row": "#endif",
           "start": 33,
           "type": "prefix",
         },
@@ -87,18 +98,23 @@ describe('getPlatformInfo', () => {
       [
         {
           "end": 14,
+          "line": 2,
+          "row": "#ifdef",
           "start": 8,
           "type": "prefix",
         },
         {
           "color": "#2aae67",
           "end": 17,
+          "line": 2,
           "row": "MP",
           "start": 15,
           "type": "platform",
         },
         {
           "end": 34,
+          "line": 3,
+          "row": "#endif",
           "start": 28,
           "type": "prefix",
         },
@@ -114,11 +130,15 @@ describe('getPlatformInfo', () => {
       [
         {
           "end": 14,
+          "line": 2,
+          "row": "#ifdef",
           "start": 8,
           "type": "prefix",
         },
         {
           "end": 30,
+          "line": 2,
+          "row": "||",
           "start": 28,
           "type": "prefix",
         },
@@ -136,6 +156,8 @@ describe('getPlatformInfo', () => {
         },
         {
           "end": 61,
+          "line": 3,
+          "row": "#endif",
           "start": 55,
           "type": "prefix",
         },

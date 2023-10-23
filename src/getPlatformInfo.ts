@@ -11,7 +11,7 @@ export function getPlatformInfo(code: string): PlatformInfo[] {
   const platformInfos = []
   for (let i = 0; i < commentAST.length; i++) {
     const item = commentAST[i]
-    const { start, end, type, row } = item
+    const { start, end, type, row, line } = item
     const color = HIGHTLIGHT_COLOR.platform[row as Platform]
 
     if (type === 'prefix') {
@@ -19,6 +19,8 @@ export function getPlatformInfo(code: string): PlatformInfo[] {
         start,
         end,
         type,
+        row,
+        line,
       })
     }
     else if (type === 'platform' && color) {
@@ -27,6 +29,7 @@ export function getPlatformInfo(code: string): PlatformInfo[] {
         end,
         type,
         color,
+        line,
         row,
       })
     }
@@ -48,4 +51,5 @@ export interface PlatformInfo {
   end: number
   type: 'prefix' | 'platform' | 'unPlatform'
   color: string
+  line: number
 }
