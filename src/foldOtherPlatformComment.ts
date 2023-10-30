@@ -18,15 +18,15 @@ export async function foldOtherPlatformComment() {
 
   const { fold, unfold } = getFoldLines(platform, platformInfo)
 
-  await commands.executeCommand('editor.unfold', {
-    levels: 1,
-    direction: 'up',
-    selectionLines: unfold,
-  })
   await commands.executeCommand('editor.fold', {
     levels: 1,
     direction: 'up',
     selectionLines: fold,
+  })
+  await commands.executeCommand('editor.unfold', {
+    levels: 1,
+    direction: 'up',
+    selectionLines: unfold,
   })
 }
 
@@ -40,8 +40,8 @@ function getFoldLines(platform: string, platformInfo: PlatformInfo[]) {
     }
   }
 
-  const fold = platformStarts.filter(({ row }) => row !== platform).map(({ line }) => line - 1)
   const unfold = platformStarts.filter(({ row }) => row === platform).map(({ line }) => line - 1)
+  const fold = platformStarts.map(({ line }) => line - 1).filter(line => !unfold.includes(line))
 
   return { fold, unfold }
 }

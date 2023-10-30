@@ -8,7 +8,7 @@ const mp = 'text'
 </script>
 
 <template>
-  <!-- #ifdef H5 -->
+  <!-- #ifdef H5 || MP -->
   <view class="test">
     test
     a
