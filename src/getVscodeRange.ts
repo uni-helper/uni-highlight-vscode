@@ -10,9 +10,14 @@ export class Ranges {
   editor!: TextEditor
   document!: TextDocument
   code!: string
+
+  static platformInfo: ReturnType<typeof getPlatformInfo>
+  static platformList: string[]
   constructor() {
     this.getContext()
+    this.setPlatformData()
     this.hasPlatformList()
+    this.setColor()
   }
 
   getContext() {
@@ -27,26 +32,23 @@ export class Ranges {
     this.code = document.getText()
   }
 
-  public get platformInfo() {
-    return getPlatformInfo(this.code)
-  }
-
-  public get platformList() {
-    return Array.from(new Set(this.platformInfo.filter(item => item.type === 'platform').map(item => item.row)))
-  }
-
-  getVscodeRange() {
-    this.value = transformPlatform(this.platformInfo, this.editor)
+  setPlatformData() {
+    Ranges.platformInfo = getPlatformInfo(this.code)
+    Ranges.platformList = Array.from(new Set(Ranges.platformInfo.filter(item => item.type === 'platform').map(item => item.row)))
   }
 
   hasPlatformList() {
-    if (this.platformList.length)
+    if (Ranges.platformList.length)
       commands.executeCommand('setContext', 'uni.hasComment', true)
     else
       commands.executeCommand('setContext', 'uni.hasComment', false)
   }
 
-  public setColor() {
+  getVscodeRange() {
+    this.value = transformPlatform(Ranges.platformInfo, this.editor)
+  }
+
+  setColor() {
     this.getVscodeRange()
     setPlatformColor(this.value, this.editor)
   }

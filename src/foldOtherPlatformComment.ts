@@ -3,10 +3,11 @@ import { Ranges } from './getVscodeRange'
 import type { PlatformInfo } from './getPlatformInfo'
 
 export async function foldOtherPlatformComment() {
-  const range = new Ranges()
-  const { platformList, platformInfo } = range
-  if (!platformList.length)
+  const { platformList, platformInfo } = Ranges
+  if (!platformList.length) {
+    window.showWarningMessage('该页面没有有效的uni条件编译代码')
     return
+  }
 
   const platform = await window.showQuickPick([
     'ALL',

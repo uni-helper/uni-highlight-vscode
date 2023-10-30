@@ -1,26 +1,16 @@
 import type { ExtensionContext } from 'vscode'
 import { commands, languages, window, workspace } from 'vscode'
 import { Ranges } from './getVscodeRange'
-import { debounce } from './utils'
 import { CommentFoldingRangeProvider } from './CommentFoldingRangeProvider'
 import { foldOtherPlatformComment } from './foldOtherPlatformComment'
 
-function onActiveEditorChanged() {
-  const range = new Ranges()
-  range.setColor()
-}
-
 function setupEventListeners() {
-  window.onDidChangeActiveTextEditor(onActiveEditorChanged)
-  workspace.onDidChangeTextDocument(debounce(() => {
-    const range = new Ranges()
-    range.setColor()
-  }, 500))
+  window.onDidChangeActiveTextEditor(() => new Ranges())
+  workspace.onDidChangeTextDocument(() => new Ranges())
 }
 
 export function activate(context: ExtensionContext) {
-  const range = new Ranges()
-  range.setColor()
+  new Ranges()
   setupEventListeners()
 
   context.subscriptions.push(
@@ -29,8 +19,7 @@ export function activate(context: ExtensionContext) {
       new CommentFoldingRangeProvider(),
     ),
     commands.registerCommand('uni.comment.reload', () => {
-      const range = new Ranges()
-      range.setColor()
+      new Ranges()
     }),
     commands.registerCommand('uni.comment.fold-other-platform', () => {
       foldOtherPlatformComment()
