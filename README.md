@@ -34,13 +34,15 @@
 
 ### 自定义高亮
 
-```json5
-/**
- * 文件路径：.vscode/settings.json
- * 配置项：uni-highlight.platform
- * 配置说明：1. 可以覆盖原有高亮颜色
- *          2. 可以添加新的平台及颜色
- */
++ 文件路径
+  + .vscode/settings.json
++ 配置项
+  + uni-highlight.platform
++ 配置说明
+  1. 可以覆盖原有高亮颜色
+  2. 可以添加新的平台及颜色
+
+```json
 {
   "uni-highlight.platform": {
     "MP-DINGTALK": "#41b883"
