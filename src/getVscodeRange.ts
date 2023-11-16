@@ -15,6 +15,8 @@ export class Ranges {
   static platformList: string[]
   constructor() {
     this.getContext()
+    if (!this.code)
+      return
     this.setPlatformData()
     this.hasPlatformList()
     this.setColor()
