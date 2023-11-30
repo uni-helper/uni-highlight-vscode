@@ -89,6 +89,7 @@
     "bumpp": "^9.1.0",
     "concurrently": "^8.0.1",
     "eslint": "^8.37.0",
+    "fastest-levenshtein": "^1.0.16",
     "ovsx": "^0.8.0",
     "pnpm": "^8.1.1",
     "tsup": "^6.7.0",

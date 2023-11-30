@@ -28,6 +28,9 @@ importers:
       eslint:
         specifier: ^8.37.0
         version: 8.38.0
+      fastest-levenshtein:
+        specifier: ^1.0.16
+        version: 1.0.16
       ovsx:
         specifier: ^0.8.0
         version: 0.8.0
@@ -1929,6 +1932,11 @@ packages:
 
   /fast-levenshtein@2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
+    dev: true
+
+  /fastest-levenshtein@1.0.16:
+    resolution: {integrity: sha512-eRnCtTTtGZFpQCwhJiUOuxPQWRXVKYDn0b2PeHfXL6/Zi53SLAzAHfVhVWK2AryC/WH05kGfxhFIPvTF0SXQzg==}
+    engines: {node: '>= 4.9.1'}
     dev: true
 
   /fastq@1.15.0:

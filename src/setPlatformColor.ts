@@ -2,6 +2,7 @@ import type { TextEditor, TextEditorDecorationType } from 'vscode'
 import { DecorationRangeBehavior, MarkdownString, window } from 'vscode'
 import { HIGHTLIGHT_COLOR } from './constants'
 import type { HighlightRange } from './transformPlatform'
+import { findClosestPlatform } from './utils'
 
 const UnderlineDecoration = window.createTextEditorDecorationType({
   textDecoration: 'none; border-bottom: 1px dashed currentColor',
@@ -57,14 +58,18 @@ export function setPlatformColor(
 
   editor.setDecorations(
     UnderlineDecoration,
-    unPlatform.map(item => ({
-      range: item.range,
-      hoverMessage: new MarkdownString(`
+    unPlatform.map((item) => {
+      const RightPlatform = findClosestPlatform(item.row)
+      return {
+        range: item.range,
+        hoverMessage: new MarkdownString(`
 ### [@uni-helper](https://github.com/uni-helper/uni-highlight-vscode)\n
-~~${item.row}~~ 不是一个有效的平台, 请检查是否拼写错误\n
+~~${item.row}~~ 不是一个有效的平台, 请检查拼写错误\n
+是否要输入：\`${RightPlatform}\`
 ***
 详情请查看[\`文档\`](https://uniapp.dcloud.net.cn/tutorial/platform.html#preprocessor)
 `),
-    })),
+      }
+    }),
   )
 }

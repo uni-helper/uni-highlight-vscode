@@ -1,3 +1,6 @@
+import { closest } from 'fastest-levenshtein'
+import { PLATFORM_LIST } from './../constants/platform'
+
 export function debounce(func: Function, delay: number) {
   let timeoutId: ReturnType<typeof setTimeout> | null = null
 
@@ -15,6 +18,12 @@ export function debounce(func: Function, delay: number) {
   }
 }
 
-export function isObject(obj: any): obj is Record<string, any> {
-  return obj !== null && typeof obj === 'object' && !Array.isArray(obj)
+export const toString = (v: any) => Object.prototype.toString.call(v)
+export const isObject = (val: any): val is object => toString(val) === '[object Object]'
+
+export function findClosestPlatform(target: string): string {
+  const UpperTarget = target.toUpperCase()
+  const exactMatchList = PLATFORM_LIST.filter(item => item.includes(UpperTarget))
+  const targetList = exactMatchList.length === 0 ? PLATFORM_LIST : exactMatchList
+  return closest(UpperTarget, targetList)
 }

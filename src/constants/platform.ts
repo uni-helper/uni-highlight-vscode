@@ -9,12 +9,15 @@ export const HIGHTLIGHT_COLOR = {
   platform: Object.assign(
     {
       'VUE3': '#41b883',
+      'UNI-APP-X': '#2b9939',
+      'APP': '#80bd00',
       'APP-PLUS': '#80bd00',
       'APP-PLUS-NVUE': '#41b883',
       'APP-NVUE': '#41b883',
       'APP-ANDROID': '#80bd00',
       'APP-IOS': '#d9774b',
       'H5': '#e5c07b',
+      'WEB': '#e5c07b',
       'MP-WEIXIN': '#2aae67',
       'MP-ALIPAY': '#ff6a00',
       'MP-BAIDU': '#2932e1',
