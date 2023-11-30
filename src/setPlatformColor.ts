@@ -2,7 +2,7 @@ import type { TextEditor, TextEditorDecorationType } from 'vscode'
 import { DecorationRangeBehavior, MarkdownString, window } from 'vscode'
 import { HIGHTLIGHT_COLOR } from './constants'
 import type { HighlightRange } from './transformPlatform'
-import { findClosestPlatform } from './utils'
+import { findClosestPlatform } from './utils/findClosestPlatform'
 
 const UnderlineDecoration = window.createTextEditorDecorationType({
   textDecoration: 'none; border-bottom: 1px dashed currentColor',

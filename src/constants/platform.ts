@@ -1,5 +1,5 @@
 import { workspace } from 'vscode'
-import { isObject } from '../utils'
+import { isObject } from '@antfu/utils'
 
 const config = workspace.getConfiguration('uni-highlight').get('platform')
 const SETTING = isObject(config) ? config : {}
