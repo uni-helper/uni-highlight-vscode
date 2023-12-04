@@ -1,5 +1,6 @@
 <h1 align="center"><font color="#2a9838">uni-helper/uni-highlight-vscode</font></h1>
 <p align="center">
+<a href="https://marketplace.visualstudio.com/items?itemName=uni-helper.uni-highlight-vscode" target="__blank"><img src="https://img.shields.io/visual-studio-marketplace/i/uni-helper.uni-highlight-vscode.svg?color=2b9939&label=Installs&logo=visual-studio-code" alt="Visual Studio Marketplace Version" /></a>
 <a href="https://marketplace.visualstudio.com/items?itemName=uni-helper.uni-highlight-vscode" target="__blank"><img src="https://img.shields.io/visual-studio-marketplace/v/uni-helper.uni-highlight-vscode.svg?color=4d9375&label=Marketplace&logo=visual-studio-code" alt="Visual Studio Marketplace Version" /></a>
 <a href="https://open-vsx.org/extension/uni-helper/uni-highlight-vscode" target="__blank"><img src="https://img.shields.io/visual-studio-marketplace/v/uni-helper.uni-highlight-vscode.svg?color=c160ef&label=OpenVSX&logo=OpenVSX" alt="Visual Studio Marketplace Version" /></a>
 </p>
