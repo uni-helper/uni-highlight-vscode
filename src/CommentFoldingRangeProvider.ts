@@ -9,6 +9,8 @@ import { Ranges } from './getVscodeRange'
 export class CommentFoldingRangeProvider implements FoldingRangeProvider {
   provideFoldingRanges(): ProviderResult<FoldingRange[]> {
     const { platformInfo } = Ranges
+    if (!platformInfo.length)
+      return []
 
     const foldingRanges: FoldingRange[] = []
     const startLines = []
