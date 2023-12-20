@@ -2,7 +2,7 @@
   "publisher": "uni-helper",
   "name": "uni-highlight-vscode",
   "displayName": "uni-highlight",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "private": true,
   "packageManager": "pnpm@8.1.1",
   "description": "在 Vscode中对条件编译的代码注释部分提供了语法高亮",
