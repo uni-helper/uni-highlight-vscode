@@ -17,6 +17,7 @@ export const HIGHTLIGHT_COLOR = {
       'APP-NVUE': '#41b883',
       'APP-ANDROID': '#80bd00',
       'APP-IOS': '#d9774b',
+      'APP-HARMONY': '#0a59f7',
       'H5': '#e5c07b',
       'WEB': '#e5c07b',
       'MP-WEIXIN': '#2aae67',
