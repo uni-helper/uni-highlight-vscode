@@ -29,7 +29,7 @@ export const HIGHTLIGHT_COLOR = {
       'MP-KUAISHOU': '#ff5005',
       'MP-JD': '#e21e17',
       'MP-360': '#00aa48',
-      'MP-XHS': '#FF213A',
+      'MP-XHS': '#ff2442',
       'MP': '#2aae67',
       'QUICKAPP-WEBVIEW': '#4497ff',
       'QUICKAPP-WEBVIEW-UNION': '#4497ff',
