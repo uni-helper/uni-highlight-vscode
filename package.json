@@ -54,7 +54,7 @@
         "uni-highlight.platform": {
           "type": "object",
           "default": {},
-          "description": "自定义平台高亮"
+          "description": "自定义平台高亮和名称"
         }
       }
     },

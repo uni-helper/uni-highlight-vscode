@@ -1,42 +1,43 @@
 import { workspace } from 'vscode'
 import { isObject } from '@antfu/utils'
+import { builtinPlatforms } from '../builtinPlatforms'
+
+// 定义接口以描述可能的对象结构
+interface PlatformConfig {
+  color?: string
+  label?: string
+}
 
 const config = workspace.getConfiguration('uni-highlight').get('platform')
-const SETTING = isObject(config) ? config : {}
+
+const SETTING = isObject(config)
+  ? Object.fromEntries(
+    Object.entries(config).map(([key, value]) => {
+      if (typeof value === 'string')
+        return [key, { color: value, label: key }]
+
+      if (isObject(value) && typeof (value as PlatformConfig).color === 'string')
+        return [key, { color: (value as PlatformConfig).color, label: (value as PlatformConfig).label ?? key }]
+
+      return [key, { color: '#859900', label: key }] // 默认颜色
+    }),
+  )
+  : {}
 
 export const HIGHTLIGHT_COLOR = {
   prefix: '#859900',
-  platform: Object.assign(
-    {
-      'VUE3': '#41b883',
-      'VUE2': '#41b883',
-      'UNI-APP-X': '#2b9939',
-      'APP': '#80bd00',
-      'APP-PLUS': '#80bd00',
-      'APP-PLUS-NVUE': '#41b883',
-      'APP-NVUE': '#41b883',
-      'APP-ANDROID': '#80bd00',
-      'APP-IOS': '#d9774b',
-      'APP-HARMONY': '#0a59f7',
-      'H5': '#e5c07b',
-      'WEB': '#e5c07b',
-      'MP-WEIXIN': '#2aae67',
-      'MP-ALIPAY': '#ff6a00',
-      'MP-BAIDU': '#2932e1',
-      'MP-TOUTIAO': '#f04142',
-      'MP-LARK': '#00d6b9',
-      'MP-QQ': '#025aef',
-      'MP-KUAISHOU': '#ff5005',
-      'MP-JD': '#e21e17',
-      'MP-360': '#00aa48',
-      'MP-XHS': '#ff2442',
-      'MP': '#2aae67',
-      'QUICKAPP-WEBVIEW': '#4497ff',
-      'QUICKAPP-WEBVIEW-UNION': '#4497ff',
-      'QUICKAPP-WEBVIEW-HUAWEI': '#e60214',
-    },
-    SETTING,
-  ),
+  platform: {
+    ...Object.assign(
+      {},
+      ...Object.keys(builtinPlatforms).map(key => ({ [key]: builtinPlatforms[key].color })),
+      ...Object.keys(SETTING).map(key => ({ [key]: SETTING[key].color })),
+    ),
+  },
+}
+
+export const PLATFORM_LABELS = {
+  ...builtinPlatforms,
+  ...SETTING,
 }
 
 export const PLATFORM_LIST = Object.keys(HIGHTLIGHT_COLOR.platform) as Platform[]
