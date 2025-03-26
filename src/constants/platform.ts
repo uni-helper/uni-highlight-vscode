@@ -40,7 +40,7 @@ export const PLATFORM_LABELS = {
   ...SETTING,
 }
 
-export const PLATFORM_LIST = Object.keys(HIGHTLIGHT_COLOR.platform) as Platform[]
+export const PLATFORM_LIST = Object.keys(HIGHTLIGHT_COLOR.platform) as string[]
 export const COMMENT_PRE = ['//', '/*', '<!--']
 
 export type Platform = keyof typeof HIGHTLIGHT_COLOR.platform

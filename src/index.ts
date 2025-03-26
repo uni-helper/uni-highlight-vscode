@@ -7,6 +7,8 @@ import { HoverProvider } from './HoverProvider'
 import { patterns } from './constants'
 import { PLATFORM_LABELS } from './constants/platform'
 
+type PlatformConfigValue = string | { color: string, label?: string }
+
 function setupEventListeners() {
   window.onDidChangeActiveTextEditor(() => new Ranges())
   workspace.onDidChangeTextDocument(() => new Ranges())
@@ -17,17 +19,19 @@ export function activate(context: ExtensionContext) {
   setupEventListeners()
 
   // 读取用户配置的平台名称
-  const customPlatformConfig = workspace.getConfiguration('uni-highlight').get('platform', {}) as { [key: string]: { color: string, label: string } }
+  const customPlatformConfig = workspace.getConfiguration('uni-highlight').get('platform', {}) as { [key: string]: PlatformConfigValue }
   // 处理自定义平台配置
-  const processedCustomPlatformConfig: { [key: string]: { color: string, label: string } } = {}
+  const processedCustomPlatformConfig: { [key: string]: PlatformConfigValue } = {}
+
   for (const key in customPlatformConfig) {
-    if (typeof customPlatformConfig[key] === 'string') {
-      processedCustomPlatformConfig[key] = { color: customPlatformConfig[key] as string, label: key }
+    const value = customPlatformConfig[key]
+    if (typeof value === 'string') {
+      processedCustomPlatformConfig[key] = { color: value, label: key }
     }
-    else {
+    else if (typeof value === 'object' && value !== null) {
       processedCustomPlatformConfig[key] = {
-        color: (customPlatformConfig[key] as { color: string, label?: string }).color,
-        label: (customPlatformConfig[key] as { color: string, label?: string }).label ?? key,
+        color: value.color,
+        label: value.label ?? key,
       }
     }
   }
