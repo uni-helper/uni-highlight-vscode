@@ -1,6 +1,9 @@
 {
   "uni-highlight.platform": {
-    "MP-DINGTALK": "#41b883"
+    "MP-DINGTALK": {
+      "color": "#1CA2FC",
+      "label": "钉钉"
+    }
   },
   "cSpell.words": [
     "WEIXIN"

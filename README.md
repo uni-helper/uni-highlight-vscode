@@ -50,11 +50,23 @@
 + 配置说明
   + 可以覆盖原有高亮颜色
   + 可以添加新的平台及颜色
+  + 可以增加平台说明
 
 ```json
 {
   "uni-highlight.platform": {
     "MP-DINGTALK": "#41b883"
+  }
+}
+```
+或者
+```json
+{
+  "uni-highlight.platform": {
+    "MP-DINGTALK": {
+      "color": "#41b883",
+      "label": "钉钉"
+    }
   }
 }
 ```
