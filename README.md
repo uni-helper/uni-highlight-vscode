@@ -58,8 +58,9 @@
     "MP-DINGTALK": "#41b883"
   }
 }
-
-// 或者
+```
+或者
+```json
 {
   "uni-highlight.platform": {
     "MP-DINGTALK": {

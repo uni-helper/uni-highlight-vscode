@@ -1,17 +1,17 @@
 // src/builtinPlatforms.ts
-export const builtinPlatforms: Record<string, { color: string; label: string }> = {
-  VUE3: { color: '#41b883', label: 'Vue 3' },
-  VUE2: { color: '#41b883', label: 'Vue 2' },
+export const builtinPlatforms: Record<string, { color: string, label: string }> = {
+  'VUE3': { color: '#41b883', label: 'Vue 3' },
+  'VUE2': { color: '#41b883', label: 'Vue 2' },
   'UNI-APP-X': { color: '#2b9939', label: 'Uni-App X' },
-  APP: { color: '#80bd00', label: 'App' },
+  'APP': { color: '#80bd00', label: 'App' },
   'APP-PLUS': { color: '#80bd00', label: 'App Plus' },
   'APP-PLUS-NVUE': { color: '#41b883', label: 'App Plus NVue' },
   'APP-NVUE': { color: '#41b883', label: 'App NVue' },
   'APP-ANDROID': { color: '#80bd00', label: 'App Android 平台' },
   'APP-IOS': { color: '#d9774b', label: 'App iOS 平台' },
   'APP-HARMONY': { color: '#0a59f7', label: 'App HarmonyOS Next 平台' },
-  H5: { color: '#e5c07b', label: 'H5' },
-  WEB: { color: '#e5c07b', label: 'Web' },
+  'H5': { color: '#e5c07b', label: 'H5' },
+  'WEB': { color: '#e5c07b', label: 'Web' },
   'MP-WEIXIN': { color: '#2aae67', label: '微信小程序' },
   'MP-ALIPAY': { color: '#ff6a00', label: '支付宝小程序' },
   'MP-BAIDU': { color: '#2932e1', label: '百度小程序' },
@@ -23,8 +23,8 @@ export const builtinPlatforms: Record<string, { color: string; label: string }> 
   'MP-360': { color: '#00aa48', label: '360小程序' },
   'MP-HARMONY': { color: '#0a59f7', label: '鸿蒙元服务' },
   'MP-XHS': { color: '#ff2442', label: '小红书小程序' },
-  MP: { color: '#2aae67', label: '小程序/鸿蒙元服务' },
+  'MP': { color: '#2aae67', label: '小程序/鸿蒙元服务' },
   'QUICKAPP-WEBVIEW': { color: '#4497ff', label: '快应用 WebView' },
   'QUICKAPP-WEBVIEW-UNION': { color: '#4497ff', label: '快应用 WebView 联合' },
-  'QUICKAPP-WEBVIEW-HUAWEI': { color: '#e60214', label: '快应用 WebView 华为' }
+  'QUICKAPP-WEBVIEW-HUAWEI': { color: '#e60214', label: '快应用 WebView 华为' },
 }
