@@ -1,5 +1,13 @@
-src
 node_modules
+playground
+src
 test
+
+.gitignore
 .github
 .vscode
+
+eslint.config.js
+pnpm-lock.yaml
+tsconfig.json
+tsup.config.ts
