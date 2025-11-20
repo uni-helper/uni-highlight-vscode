@@ -1,16 +1,22 @@
 import type {
   FoldingRangeProvider,
   ProviderResult,
+  TextDocument,
 } from 'vscode'
 
 import { FoldingRange, FoldingRangeKind } from 'vscode'
+import { foldBlacklist } from './constants/patterns'
 import { Ranges } from './getVscodeRange'
 
 export class CommentFoldingRangeProvider implements FoldingRangeProvider {
-  provideFoldingRanges(): ProviderResult<FoldingRange[]> {
+  provideFoldingRanges(document: TextDocument): ProviderResult<FoldingRange[]> {
+    // 黑名单文件不提供折叠功能
+    if (foldBlacklist.some(ext => document.fileName.endsWith(ext)))
+      return null
+
     const { platformInfo } = Ranges
-    if (!platformInfo.length)
-      return []
+    if (!platformInfo || !platformInfo.length)
+      return null
 
     const foldingRanges: FoldingRange[] = []
     const startLines = []
@@ -42,6 +48,6 @@ export class CommentFoldingRangeProvider implements FoldingRangeProvider {
       )
     }
 
-    return foldingRanges
+    return foldingRanges.length ? foldingRanges : null
   }
 }

@@ -23,4 +23,10 @@ function createFilePattern(extension: string) {
   }
 }
 
+/** 折叠文件黑名单 */
+export const foldBlacklist = [
+  '.uvue',
+  '.uts',
+]
+
 export const patterns = fileExtensions.map(createFilePattern)
