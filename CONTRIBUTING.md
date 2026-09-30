@@ -4,8 +4,8 @@
 
 ## 前置条件
 
-- Node.js（仓库没有 `.node-version` 之类的固定版本，CI 在 16.x 上运行）
-- pnpm 8.3.1（见 `package.json` 的 `packageManager`）
+- Node.js 26（见 `.node-version`）
+- pnpm 12.3.4（见 `package.json` 的 `packageManager`）
 
 ## 仓库结构
 
@@ -21,6 +21,8 @@ src/
   *.ts                # 高亮、折叠、悬停的具体实现
 test/                 # vitest 测试（内联快照）
 playground/           # 手动调试用例
+logo.svg logo.png     # 插件图标（svg 为源文件，png 供打包）
+banner.svg            # 组织风格横幅
 ```
 
 ## 本地开发
@@ -42,7 +44,7 @@ pnpm typecheck  # tsc --noEmit
 pnpm test       # vitest；本地默认 watch，CI 中单次运行
 ```
 
-CI 在 Node 16.x 上运行 lint 和 typecheck，并在 ubuntu/macos/windows 三个系统上先 build 再 test。
+CI 在 Node 22/24/26 × ubuntu/macos/windows 上依次运行 build、lint、typecheck 和 test。
 
 ## 提交规范
 
@@ -59,7 +61,7 @@ CI 在 Node 16.x 上运行 lint 和 typecheck，并在 ubuntu/macos/windows 三�
 
 ## 发布
 
-维护者操作：运行 `pnpm release`，bumpp 会提升版本号、提交、打 tag 并推送；tag 触发 `.github/workflows/release.yml`，自动发布到 VSCode Marketplace 和 OpenVSX。
+维护者操作：运行 `pnpm release`，bumpp 会提升版本号、提交、打 tag 并推送；tag 触发 `.github/workflows/release.yml`，用 changelogithub 创建 GitHub Release，然后发布到 VSCode Marketplace 和 OpenVSX。
 
 ## 行为准则
 

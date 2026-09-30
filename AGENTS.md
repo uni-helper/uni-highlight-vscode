@@ -5,11 +5,13 @@ VSCode extension that syntax-highlights and folds uni-app conditional-compilatio
 ## Project
 
 - TypeScript, `strict`; bundled by tsup into a single CJS file `dist/index.js` (`vscode` stays external). Build output is not committed.
-- Package manager pnpm 8.3.1 (`packageManager`). No Node pin file; CI runs Node 16.x.
-- `engines.vscode` is `^1.47.0` and `@types/vscode` is pinned to exactly `1.47.0` — move them together.
-- No `main`-module npm consumption: `private: true`; users install the extension, not the package.
-- Release flow: `pnpm release` (bumpp) pushes a `v*` tag → `.github/workflows/release.yml` → `vsce` + `ovsx` publish.
+- Package manager pnpm 12.3.4 (`packageManager`); Node is pinned to 26 by `.node-version`. pnpm settings and build-script approvals (`allowBuilds` for esbuild/keytar/vsce-sign) live in `pnpm-workspace.yaml`.
+- `engines.vscode` and `@types/vscode` are both `^1.138.0` — move them together.
+- Distributed only through the VSCode Marketplace and OpenVSX (`vsce`/`ovsx`); not an npm package — never `npm publish` (there is no `private` guard anymore).
+- The vsix is controlled by the npm `files` field (`LICENSE`, `logo.png`, `dist`) — there is no `.vscodeignore`. A new runtime asset must be added to `files` or it will be missing from the package (and `vsce` fails hard on the `icon` file).
+- Release flow: `pnpm release` (bumpp) pushes a `v*` tag → `.github/workflows/release.yml` → changelogithub creates the GitHub Release, then `vsce` + `ovsx` publish.
 - The `dev` and `vscode:prepublish` scripts call `nr` from `@antfu/ni`.
+- CI matrix is Node 22/24/26 × ubuntu/macos/windows, one job running build → lint → typecheck → test.
 
 ## Commands
 
@@ -45,6 +47,7 @@ Pipeline: document text → `parseComment` (regex AST) → `getPlatformInfo` (ty
 
 - `src/constants/platform.ts` reads `workspace.getConfiguration('uni-highlight')` **at module load** — this is why every test file starts with `vi.mock('vscode', …)`. Settings changes need a window reload; nothing listens to `onDidChangeConfiguration`, and the reload command only rescans the document, it does not re-read config.
 - Tests: vitest with inline snapshots, `test/` mirrors the `src/` layout.
-- `playground/` is a manual test bench for the F5 extension dev host; excluded from lint and the vsix.
+- `playground/` is a manual test bench for the F5 extension dev host; excluded from lint via `eslint.config.js` and from the vsix via `files`.
+- `.editorconfig` is committed (2-space indent, LF, UTF-8).
 - Comments and user-facing strings in `src/` are Simplified Chinese; docs are Chinese; this file is English.
 - Conventional Commits (`feat:`, `fix:`, `chore:`, …); release tags are `v*`.
