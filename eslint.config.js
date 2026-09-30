@@ -4,5 +4,6 @@ module.exports = antfu({
   ignores: ['playground'],
   rules: {
     'no-new': 'off',
+    'pnpm/yaml-enforce-settings': 'off',
   },
 })
