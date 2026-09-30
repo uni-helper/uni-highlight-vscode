@@ -2,17 +2,20 @@
   "publisher": "uni-helper",
   "name": "uni-highlight-vscode",
   "displayName": "uni-highlight",
+  "type": "commonjs",
   "version": "0.3.16",
-  "private": true,
-  "packageManager": "pnpm@8.3.1",
-  "description": "在 Vscode中对条件编译的代码注释部分提供了语法高亮",
-  "author": "FliPPeDround https://github.com/FliPPeDround",
+  "packageManager": "pnpm@12.3.4",
+  "description": "在 VS Code 中对条件编译的代码注释部分提供了语法高亮",
+  "author": {
+    "name": "FliPPeDround",
+    "url": "https://github.com/FliPPeDround"
+  },
   "license": "MIT",
   "funding": "https://afdian.com/a/flippedround",
   "homepage": "https://github.com/uni-helper/uni-highlight-vscode#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/uni-helper/uni-highlight-vscode"
+    "url": "git+https://github.com/uni-helper/uni-highlight-vscode.git"
   },
   "bugs": {
     "url": "https://github.com/uni-helper/uni-highlight-vscode/issues"
@@ -26,9 +29,11 @@
     "Other"
   ],
   "main": "./dist/index.js",
-  "icon": "icon.png",
+  "icon": "logo.png",
   "files": [
-    "dist"
+    "LICENSE",
+    "dist",
+    "logo.png"
   ],
   "engines": {
     "vscode": "^1.47.0"
@@ -82,21 +87,20 @@
     "release": "bumpp"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.1.2",
-    "@antfu/ni": "^0.21.2",
-    "@antfu/utils": "^0.7.6",
-    "@types/node": "^18.15.11",
+    "@antfu/eslint-config": "^9.5.1",
+    "@antfu/ni": "^30.6.0",
+    "@antfu/utils": "^9.3.0",
+    "@types/node": "^26.6.3",
     "@types/vscode": "1.47.0",
-    "@vscode/vsce": "^2.19.0",
-    "bumpp": "^9.1.0",
-    "concurrently": "^8.0.1",
-    "eslint": "^8.54.0",
+    "@vscode/vsce": "^3.9.2",
+    "bumpp": "^12.3.0",
+    "concurrently": "^10.0.5",
+    "eslint": "^10.11.0",
     "fastest-levenshtein": "^1.0.16",
-    "ovsx": "^0.8.0",
-    "pnpm": "^8.1.1",
-    "tsup": "^6.7.0",
-    "typescript": "^5.0.3",
-    "vite": "^4.2.1",
-    "vitest": "^0.29.8"
+    "ovsx": "^1.2.0",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3",
+    "vite": "^8.3.1",
+    "vitest": "^5.0.2"
   }
 }

@@ -1,2 +1,2 @@
-export const commentPreReg = /(<!--|\/\/|\/\*)([\s]*)(#ifdef|#ifndef|#endif)([^\n]*)/gm
-export const commentSufReg = /([^\n]*)(-->|\*\/)/gm
+export const commentPreReg = /(<!--|\/\/|\/\*)(\s*)(#ifdef|#ifndef|#endif)([^\n]*)/g
+export const commentSufReg = /([^\n]*)(-->|\*\/)/g

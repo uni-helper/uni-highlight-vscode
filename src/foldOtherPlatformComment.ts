@@ -1,6 +1,6 @@
+import type { PlatformInfo } from './getPlatformInfo'
 import { commands, window } from 'vscode'
 import { Ranges } from './getVscodeRange'
-import type { PlatformInfo } from './getPlatformInfo'
 
 export async function foldOtherPlatformComment() {
   const { platformList, platformInfo } = Ranges

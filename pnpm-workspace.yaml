@@ -1,0 +1,11 @@
+minimumReleaseAgeExcludePrune: true
+trustPolicy: off
+shellEmulator: true
+
+configDependencies:
+  '@pnpm/plugin-trusted-deps': latest
+
+allowBuilds:
+  '@vscode/vsce-sign': true
+  esbuild: true
+  keytar: true

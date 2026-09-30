@@ -1,6 +1,6 @@
 import type { TextEditor, TextEditorDecorationType } from 'vscode'
-import { DecorationRangeBehavior, MarkdownString, window } from 'vscode'
 import type { HighlightRange } from './transformPlatform'
+import { DecorationRangeBehavior, MarkdownString, window } from 'vscode'
 import { HIGHTLIGHT_COLOR } from './constants'
 import { findClosestPlatform } from './utils/findClosestPlatform'
 

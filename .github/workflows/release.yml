@@ -7,15 +7,27 @@ on:
 
 jobs:
   release:
+    permissions:
+      id-token: write
+      contents: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-      - uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v7
         with:
-          node-version: 16.x
-          cache: pnpm
-      - run: pnpm install
+          fetch-depth: 0
+
+      - name: Setup pnpm and Node.js
+        uses: pnpm/setup@v3
+        with:
+          cache: true
+          require-lockfile: true
+
+      - name: GitHub Release
+        run: pnpx changelogithub
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
       - run: pnpm run publish
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
