@@ -1,9 +1,9 @@
-import { commands, window } from 'vscode'
 import type { TextDocument, TextEditor } from 'vscode'
-import { getPlatformInfo } from './../src/getPlatformInfo'
 import type { HighlightRange } from './transformPlatform'
-import { transformPlatform } from './transformPlatform'
+import { commands, window } from 'vscode'
+import { getPlatformInfo } from './../src/getPlatformInfo'
 import { setPlatformColor } from './setPlatformColor'
+import { transformPlatform } from './transformPlatform'
 
 export class Ranges {
   value!: HighlightRange

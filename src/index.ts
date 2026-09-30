@@ -1,11 +1,11 @@
 import type { ExtensionContext } from 'vscode'
 import { commands, languages, window, workspace } from 'vscode'
-import { Ranges } from './getVscodeRange'
 import { CommentFoldingRangeProvider } from './CommentFoldingRangeProvider'
-import { foldOtherPlatformComment } from './foldOtherPlatformComment'
-import { HoverProvider } from './HoverProvider'
 import { patterns } from './constants'
 import { PLATFORM_LABELS } from './constants/platform'
+import { foldOtherPlatformComment } from './foldOtherPlatformComment'
+import { Ranges } from './getVscodeRange'
+import { HoverProvider } from './HoverProvider'
 
 type PlatformConfigValue = string | { color: string, label?: string }
 

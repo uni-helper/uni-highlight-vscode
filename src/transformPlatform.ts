@@ -1,6 +1,6 @@
 import type { TextEditor } from 'vscode'
-import { Range } from 'vscode'
 import type { PlatformInfo } from './getPlatformInfo'
+import { Range } from 'vscode'
 
 export function transformPlatform(platformInfos: PlatformInfo[], editor: TextEditor) {
   const highlightRange: HighlightRange = {
