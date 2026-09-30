@@ -29,35 +29,35 @@
 
 ### 基础使用
 
-<img src="./.github/images/base.png" width="300">
+<img src="./.github/images/base.png" width="300" alt="base">
 
 ### 错误提示
 
-<img src="./.github/images/error.png" width="400">
+<img src="./.github/images/error.png" width="400" alt="error">
 
 ### 错误推测
 
-<img src="./.github/images/infer.png" width="400">
+<img src="./.github/images/infer.png" width="400" alt="infer">
 
 ### 注释块折叠
 
-<img src="./.github/images/folding.png" width="300">
+<img src="./.github/images/folding.png" width="300" alt="folding">
 
 ### 多平台高亮
 
-<img src="./.github/images/more.png" width="300">
+<img src="./.github/images/more.png" width="300" alt="more">
 
 ### 各平台多种颜色高亮
 
-<img src="./.github/images/colorful.png" width="300">
+<img src="./.github/images/colorful.png" width="300" alt="colorful">
 
 ### CSS 高亮
 
-<img src="./.github/images/css.png" width="300">
+<img src="./.github/images/css.png" width="300" alt="css">
 
 ### HTML 高亮
 
-<img src="./.github/images/html.png" width="300">
+<img src="./.github/images/html.png" width="300" alt="html">
 
 ## 扩展设置
 
