@@ -5,7 +5,7 @@
 ## 前置条件
 
 - Node.js 26（见 `.node-version`）
-- pnpm 12.3.4（见 `package.json` 的 `packageManager`）
+- pnpm 12.8.1（见 `package.json` 的 `packageManager`）
 
 ## 仓库结构
 

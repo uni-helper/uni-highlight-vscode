@@ -5,7 +5,7 @@ VSCode extension that syntax-highlights and folds uni-app conditional-compilatio
 ## Project
 
 - TypeScript, `strict`; bundled by tsup into a single CJS file `dist/index.js` (`vscode` stays external). Build output is not committed.
-- Package manager pnpm 12.3.4 (`packageManager`); Node is pinned to 26 by `.node-version`. pnpm settings and build-script approvals (`allowBuilds` for esbuild/keytar/vsce-sign) live in `pnpm-workspace.yaml`.
+- Package manager pnpm 12.8.1 (`packageManager`); Node is pinned to 26 by `.node-version`. pnpm settings and build-script approvals (`allowBuilds` for esbuild/keytar/vsce-sign) live in `pnpm-workspace.yaml`.
 - `engines.vscode` is `^1.47.0` (keeps old VS Code support) and `@types/vscode` is pinned to exactly `1.47.0` — no caret: `^1.47.0` resolves to the latest 1.x and `vsce` then rejects the package ("greater than engines.vscode"). Move the two together.
 - Distributed only through the VSCode Marketplace and OpenVSX (`vsce`/`ovsx`); not an npm package — never `npm publish` (there is no `private` guard anymore).
 - The vsix is controlled by the npm `files` field (`LICENSE`, `logo.png`, `dist`) — there is no `.vscodeignore`. A new runtime asset must be added to `files` or it will be missing from the package (and `vsce` fails hard on the `icon` file).

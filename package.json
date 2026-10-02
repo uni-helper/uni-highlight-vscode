@@ -4,7 +4,7 @@
   "displayName": "uni-highlight",
   "type": "commonjs",
   "version": "0.3.17",
-  "packageManager": "pnpm@12.3.4",
+  "packageManager": "pnpm@12.8.1",
   "description": "在 VS Code 中对条件编译的代码注释部分提供了语法高亮",
   "author": {
     "name": "FliPPeDround",
@@ -101,6 +101,6 @@
     "tsup": "^8.5.1",
     "typescript": "^6.0.3",
     "vite": "^8.3.1",
-    "vitest": "^5.0.2"
+    "vitest": "^5.0.3"
   }
 }
