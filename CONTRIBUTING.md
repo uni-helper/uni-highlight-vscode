@@ -16,8 +16,9 @@
 src/
   index.ts            # 插件入口：读取配置、合并平台、注册提供器和命令
   parseComment/       # 条件编译注释解析为 AST
-  constants/          # 正则、文件匹配模式、内置平台颜色
+  constants/          # 正则、文件匹配模式、配置读取
   utils/              # 平台名纠错（编辑距离）
+  builtinPlatforms.ts # 内置平台（颜色 + 中文标签）
   *.ts                # 高亮、折叠、悬停的具体实现
 test/                 # vitest 测试（内联快照）
 playground/           # 手动调试用例
@@ -56,7 +57,7 @@ CI 在 Node 22/24/26 × ubuntu/macos/windows 上依次运行 build、lint、type
 ## Pull Request 指南
 
 - 保持改动聚焦，一个 PR 只解决一个问题。
-- 新增或调整内置平台时，同步 `src/builtinPlatforms.ts` 与 README 中的相关说明。
+- 新增或调整内置平台时，同步 `src/builtinPlatforms.ts` 与 README 中的内置平台表。
 - CI 通过后等待 review；拿不准方案时先开 issue 讨论。
 
 ## 发布

@@ -90,6 +90,40 @@
 
 修改设置后需要重载窗口（`Developer: Reload Window`）才会生效。
 
+### 内置平台
+
+内置以下 27 个平台，平台列就是条件编译注释里写的名字，标签是悬停提示里显示的名称：
+
+|平台|标签|颜色|
+|-|-|-|
+|`VUE3`|Vue 3|`#41b883`|
+|`VUE2`|Vue 2|`#41b883`|
+|`UNI-APP-X`|Uni-App X|`#2b9939`|
+|`APP`|App|`#80bd00`|
+|`APP-PLUS`|App Plus|`#80bd00`|
+|`APP-PLUS-NVUE`|App Plus NVue|`#41b883`|
+|`APP-NVUE`|App NVue|`#41b883`|
+|`APP-ANDROID`|App Android 平台|`#80bd00`|
+|`APP-IOS`|App iOS 平台|`#d9774b`|
+|`APP-HARMONY`|App HarmonyOS Next 平台|`#0a59f7`|
+|`H5`|H5|`#e5c07b`|
+|`WEB`|Web|`#e5c07b`|
+|`MP-WEIXIN`|微信小程序|`#2aae67`|
+|`MP-ALIPAY`|支付宝小程序|`#ff6a00`|
+|`MP-BAIDU`|百度小程序|`#2932e1`|
+|`MP-TOUTIAO`|抖音/字节跳动小程序|`#f04142`|
+|`MP-LARK`|飞书小程序|`#00d6b9`|
+|`MP-QQ`|QQ小程序|`#025aef`|
+|`MP-KUAISHOU`|快手小程序|`#ff5005`|
+|`MP-JD`|京东小程序|`#e21e17`|
+|`MP-360`|360小程序|`#00aa48`|
+|`MP-HARMONY`|鸿蒙元服务|`#0a59f7`|
+|`MP-XHS`|小红书小程序|`#ff2442`|
+|`MP`|小程序/鸿蒙元服务|`#2aae67`|
+|`QUICKAPP-WEBVIEW`|快应用 WebView|`#4497ff`|
+|`QUICKAPP-WEBVIEW-UNION`|快应用 WebView 联合|`#4497ff`|
+|`QUICKAPP-WEBVIEW-HUAWEI`|快应用 WebView 华为|`#e60214`|
+
 ## 命令
 
 |命令|标题|说明|
