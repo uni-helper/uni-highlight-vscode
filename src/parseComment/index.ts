@@ -5,7 +5,9 @@ export function parseComment(code: string) {
   if (code.trim().length === 0)
     return
 
-  const commentResults = [...code.matchAll(commentPreReg)]
+  const commentResults = [
+    ...code.matchAll(commentPreReg),
+  ]
   if (commentResults.length === 0)
     return
 
@@ -39,7 +41,9 @@ export function parseComment(code: string) {
 
       if (platforms.length > 1) {
         const orRex = /\|\|/g
-        const orResult = [...platform.matchAll(orRex)]
+        const orResult = [
+          ...platform.matchAll(orRex),
+        ]
         const offset = index + self.indexOf(_platform) + 1
         orResult.forEach((element) => {
           const orStart = offset + element.index!

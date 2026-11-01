@@ -28,7 +28,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-      - run: pnpm run publish
+      - run: pnpx @vscode/vsce publish --oidc
+
+      - run: pnpx ovsx publish
         env:
-          VSCE_PAT: ${{ secrets.VSCE_PAT }}
           OVSX_PAT: ${{ secrets.OVSX_PAT }}

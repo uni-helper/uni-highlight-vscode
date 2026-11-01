@@ -13,13 +13,24 @@ const config = workspace.getConfiguration('uni-highlight').get('platform')
 const SETTING = isObject(config)
   ? Object.fromEntries(
       Object.entries(config).map(([key, value]) => {
-        if (typeof value === 'string')
-          return [key, { color: value, label: key }]
+        if (typeof value === 'string') {
+          return [
+            key,
+            { color: value, label: key },
+          ]
+        }
 
-        if (isObject(value) && typeof (value as PlatformConfig).color === 'string')
-          return [key, { color: (value as PlatformConfig).color, label: (value as PlatformConfig).label ?? key }]
+        if (isObject(value) && typeof (value as PlatformConfig).color === 'string') {
+          return [
+            key,
+            { color: (value as PlatformConfig).color, label: (value as PlatformConfig).label ?? key },
+          ]
+        }
 
-        return [key, { color: '#859900', label: key }] // 默认颜色
+        return [
+          key,
+          { color: '#859900', label: key },
+        ] // 默认颜色
       }),
     )
   : {}
