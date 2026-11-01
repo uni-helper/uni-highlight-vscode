@@ -4,7 +4,7 @@
   "displayName": "uni-highlight",
   "type": "commonjs",
   "version": "0.3.17",
-  "packageManager": "pnpm@12.8.1",
+  "packageManager": "pnpm@12.16.1",
   "description": "在 VS Code 中对条件编译的代码注释部分提供了语法高亮",
   "author": {
     "name": "FliPPeDround",
@@ -79,28 +79,22 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "vscode:prepublish": "nr build",
-    "publish": "concurrently \"pnpm:publish:vscode\" \"pnpm:publish:openvsx\"",
-    "publish:vscode": "vsce package --no-dependencies && vsce publish --no-dependencies",
-    "publish:openvsx": "ovsx publish",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
     "release": "bumpp"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^9.5.1",
+    "@antfu/eslint-config": "^10.0.0",
     "@antfu/ni": "^30.6.0",
     "@antfu/utils": "^9.3.0",
-    "@types/node": "^26.6.3",
+    "@types/node": "^26.6.6",
     "@types/vscode": "1.47.0",
-    "@vscode/vsce": "^3.9.2",
     "bumpp": "^12.3.0",
-    "concurrently": "^10.0.5",
-    "eslint": "^10.11.0",
+    "eslint": "^10.14.0",
     "fastest-levenshtein": "^1.0.16",
-    "ovsx": "^1.2.0",
-    "tsup": "^8.5.1",
+    "tsup": "^9.0.0",
     "typescript": "^6.0.3",
-    "vite": "^8.3.1",
-    "vitest": "^5.0.3"
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
   }
 }

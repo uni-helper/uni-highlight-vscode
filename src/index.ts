@@ -37,7 +37,10 @@ export function activate(context: ExtensionContext) {
   }
 
   // 合并内置平台和自定义平台
-  const mergedPlatformLabels: any = { ...PLATFORM_LABELS, ...processedCustomPlatformConfig }
+  const mergedPlatformLabels: any = {
+    ...PLATFORM_LABELS,
+    ...processedCustomPlatformConfig,
+  }
 
   context.subscriptions.push(
     languages.registerFoldingRangeProvider(
